@@ -1,0 +1,23 @@
+import { VisaType } from "./profile";
+import { BooleanLiteral } from "./shared";
+
+export interface ChecklistItem {
+    id: string;
+    title: string;
+    formLabel: string;
+    description: string;
+    visaType: VisaType | "universal";
+    inputType:  "text"|"file";
+    category: "program"|"finance";
+    isRequired: BooleanLiteral;
+    createdAt?: string;
+}
+export interface VisaProfileChecklistItem {
+    id: string;
+    visaProfileId: string;
+    checklistItemId: string;
+    value: string;
+    isApproved: BooleanLiteral;
+    createdAt: string;
+}
+
