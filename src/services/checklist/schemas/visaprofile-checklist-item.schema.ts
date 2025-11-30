@@ -42,8 +42,8 @@ export const visaProfileChecklistItemSchema = {
         }
     `,
     getVisaProfileChecklistItemsByChecklist: (query: string) => `
-       query getVisaProfileChecklistItemsByChecklist($checklistItem: ChecklistItemInput!, $limit: Int!, $skip: Int!) {
-           getVisaProfileChecklistItemsByChecklist(checklistItem: $checklistItem, limit: $limit, skip: $skip) {
+       query getVisaProfileChecklistItemsByChecklist($search: String, $checklistItem: ChecklistItemInput, $limit: Int!, $skip: Int!) {
+           getVisaProfileChecklistItemsByChecklist(search: $search, checklistItem: $checklistItem, limit: $limit, skip: $skip) {
                ${query}
            }     
        }

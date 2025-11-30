@@ -125,6 +125,16 @@ describe.sequential("Visa profile checklist item API", () => {
         expect(res?.visaProfileChecklistItems.length).not.equal(0);
         expect(res?.total).not.equal(0);
     })
+    it("should list visa profile checklist items by checklist item search", async () => {
+        const res = await visaProfileChecklistItemService.getVisaProfileChecklistItemsByChecklist({
+            search: checklistItemTitle,
+            limit: 100,
+            skip: 0
+        })    
+        expect(res).not.toBeNull();
+        expect(res?.visaProfileChecklistItems.length).not.equal(0);
+        expect(res?.total).not.equal(0);
+    })
 
     it("should update visa profile checklist item", async () => {
         const res = await visaProfileChecklistItemService.updateVisaProfileChecklistItem({
