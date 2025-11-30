@@ -1,6 +1,6 @@
 {
     "name": "@visa-check-r/integrations",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "description": "integrations for visa check r",
     "keywords": [
         "graphql",
