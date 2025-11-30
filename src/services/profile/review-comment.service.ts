@@ -1,7 +1,6 @@
 import { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
 import { visaProfileReviewCommentSchema } from "./schemas/review-comment.schema";
-import { updateVisaProfileResponseFields } from "./types";
 import { 
     CreateVisaProfileReviewCommentRequest, CreateVisaProfileReviewCommentResponse, 
     createVisaProfileReviewCommentResponseFields, createVisaProfileReviewCommentResponseNestedFields, 

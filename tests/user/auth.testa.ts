@@ -68,22 +68,22 @@ describe.sequential("Auth API", () => {
     expect(res).not.toBeNull();
     expect(res?.user.fullName).not.equal("")
   })
-  // it("change login password", async () => {
-  //   const res = await authService.resetPassword({
-  //     email, password: newPassword
-  //   }, {}, { headers });
-  //   expect(res?.success).toBeTruthy();
-  // })
-  // it("login with new password", async () => {
-  //   const res = await authService?.login({
-  //     password: newPassword,
-  //     email, userType
-  //   });
-  //   if(res?.accessToken){
-  //     headers.Authorization = `Bearer ${res?.accessToken}`;
-  //   }
-  //   expect(res).not.toBeNull();
-  // })
+  it("change login password", async () => {
+    const res = await authService.changePassword({
+      email, oldPassword: password, newPassword,
+    }, {}, { headers });
+    expect(res?.success).toBeTruthy();
+  })
+  it("login with new password", async () => {
+    const res = await authService?.login({
+      password: newPassword,
+      email, userType
+    });
+    if(res?.accessToken){
+      headers.Authorization = `Bearer ${res?.accessToken}`;
+    }
+    expect(res).not.toBeNull();
+  })
   it("should not sign up with already user credentials", async () => {
     try {
       const res = await authService?.signUp({

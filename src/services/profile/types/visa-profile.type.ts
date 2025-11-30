@@ -1,5 +1,6 @@
-import { VisaProfile } from "../../../types";
-import { VisaProfileFields, visaProfileQuery } from "../profile.entity";
+import { ConsultantAssignment, VisaProfile } from "../../../types";
+import { UserFields, userQuery } from "../../user/user.entity";
+import { ConsultantAssignmentFields, consultantAssignmentQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery, VisaApplicationFields, visaApplicationQuery, VisaProfileFields, visaProfileQuery } from "../profile.entity";
 import { getConsultantAssignmentResponseNestedFields, GetConsultantAssignmentResponseNestedFields } from "./consultant-assignment.type";
 import { getReadinessScoreReviewResponseNestedFields, GetReadinessScoreReviewResponseNestedFields } from "./rs-review.type";
 import { GetVisaApplicationResponseNestedFields, getVisaApplicationResponseNestedFields } from "./visa-application.type";
@@ -11,16 +12,18 @@ export interface GetVisaProfileResponse {
     visaProfile: VisaProfile;
 }
 export const getVisaProfileResponse: (keyof GetVisaProfileResponse)[] = ["visaProfile"];
-export interface GetVisaProfileResponseNestedFields extends 
-    GetVisaApplicationResponseNestedFields,
-    GetReadinessScoreReviewResponseNestedFields
-{
+export interface GetVisaProfileResponseNestedFields {
     visaProfile: VisaProfileFields
+    visaApplication: VisaApplicationFields;
+    readinessScoreReview: ReadinessScoreReviewFields;
+    consultantAssignment: ConsultantAssignmentFields;
+    consultant: UserFields;
 }
 export const _getVisaProfileResponseNestedFields: Omit<GetVisaProfileResponseNestedFields, "visaProfile"> = {
-    ...getVisaApplicationResponseNestedFields,
-    ...getConsultantAssignmentResponseNestedFields,
-    ...getReadinessScoreReviewResponseNestedFields
+    visaApplication: visaApplicationQuery,
+    readinessScoreReview: readinessScoreReviewQuery,
+    consultantAssignment: consultantAssignmentQuery,
+    consultant: userQuery
 }
 export const getVisaProfileResponseNestedFields: GetVisaProfileResponseNestedFields = {
     ..._getVisaProfileResponseNestedFields,

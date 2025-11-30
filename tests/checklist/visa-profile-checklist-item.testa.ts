@@ -12,7 +12,7 @@ describe.sequential("Visa profile checklist item API", () => {
     let visaProfileChecklistItemService: VisaProfileChecklistItemService;
     let visaProfileId: string;
     let checklistItemId: string
-    let checklistItemTitle = chance.string();
+    let checklistItemTitle = chance.name();
 
     beforeAll(async () => {
         console.log("🌍 [visa-profile-checklist-item.test.ts] Running once for all tests...");
@@ -44,8 +44,8 @@ describe.sequential("Visa profile checklist item API", () => {
         const res3 = await checklistItemService.createChecklistItem({
             checklistItem: {
                 title: checklistItemTitle,
-                formLabel: chance.string(),
-                description: chance.string(),
+                formLabel: chance.name(),
+                description: chance.name(),
                 visaType: "study",
                 inputType: "text",
                 category: "program",

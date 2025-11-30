@@ -50,6 +50,7 @@ export type ResetPasswordResponse = {
 }
 export const resetPasswordResponseFields: (keyof ResetPasswordResponse)[] = ["success"];
 
+
 // update password 
 export interface UpdatePasswordRequest {
     email: string;
@@ -57,6 +58,6 @@ export interface UpdatePasswordRequest {
     newPassword: string;
 }
 export type UpdatePasswordResponse = {
-    successful: boolean;
+    success: boolean;
 }
-export const updatePasswordResponseFields: (keyof UpdatePasswordResponse)[] = ["successful"];
+export const updatePasswordResponseFields: (keyof UpdatePasswordResponse)[] = ["success"];

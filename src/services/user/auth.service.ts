@@ -7,6 +7,9 @@ import {
   loginResponseFields, ResetPasswordRequest, ResetPasswordResponse, resetPasswordResponseFields, SendOTPRequest, SendOTPResponse, sendOTPResponseFields, SignUpRequest, 
   SignUpResponse, 
   signUpResponseFields, 
+  UpdatePasswordRequest, 
+  UpdatePasswordResponse, 
+  updatePasswordResponseFields, 
   VerifyOTPRequest,
   VerifyOTPResponse,
   verifyOTPResponseFields
@@ -14,6 +17,23 @@ import {
 
 
 export const createAuthService = (client: GraphQLClient) => ({
+  async changePassword(
+    input: UpdatePasswordRequest,
+    fetchFields?: {
+      root?: (keyof UpdatePasswordResponse)[],
+    },
+    option?: RequestOption
+  ): Promise<UpdatePasswordResponse|undefined> {
+    const res = await client.request<{ updatePassword: UpdatePasswordResponse }>(authSchema.updatePassword(
+        gqlQueryStringBuilder<UpdatePasswordResponse>(
+          fetchFields?.root ?? updatePasswordResponseFields
+        )
+      ), 
+      input,
+      option
+    );
+    return res.data?.updatePassword
+  },
   async resetPassword(
     input: ResetPasswordRequest,
     fetchFields?: {

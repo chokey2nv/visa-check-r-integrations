@@ -47,6 +47,7 @@ export const listVisaProfileChecklistItemResponseNestedFields: ListVisaProfileCh
 // get visa profile checklist items by checklist item
 export interface GetVisaProfileChecklistItemsByChecklistRequest {
     checklistItem?: Partial<ChecklistItem>;
+    visaProfileChecklistItem?: Partial<VisaProfileChecklistItem>;
     search?: string;
     skip: number;
     limit: number;

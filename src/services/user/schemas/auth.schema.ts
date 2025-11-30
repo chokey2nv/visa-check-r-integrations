@@ -21,6 +21,14 @@ export const authSchema = {
           }
         }
     `,
+    // updatePassword (email: String!, oldPassword: String!, newPassword: String!)
+    updatePassword: (query: string) => `
+        mutation updatePassword($email: String!, $oldPassword: String!, $newPassword: String!) {
+          updatePassword(email: $email, oldPassword: $oldPassword, newPassword: $newPassword) {
+            ${query}
+          }
+        }
+    `,
     login: (query: string) => `
        mutation login($email: String!, $password: String!, $userType: UserTypeEnum) {
          login(email: $email, password: $password, userType: $userType) {
