@@ -11,6 +11,14 @@ export interface ChecklistItem {
     category: "program"|"finance";
     isRequired: BooleanLiteral;
     createdAt?: string;
+    status: "active"|"inactive";
+}
+
+export interface FileInfo {
+    url: string;
+    name: string;
+    size: number;
+    mimeType: string
 }
 export interface VisaProfileChecklistItem {
     id: string;
@@ -19,5 +27,7 @@ export interface VisaProfileChecklistItem {
     value: string;
     isApproved: BooleanLiteral;
     createdAt: string;
+    checklistItem?: ChecklistItem;
+    fileInfo: FileInfo
 }
 

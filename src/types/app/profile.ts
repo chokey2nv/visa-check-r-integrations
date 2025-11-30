@@ -3,7 +3,7 @@ import { BooleanLiteral } from "./shared";
 import { User } from "./user";
 
 
-export type VisaType = "study"|"visit"|"extendVisa"|"relocate"
+export type VisaType = "study"|"visit"|"work"|"extendVisa"|"relocate"
 export type VisaApplicationMetricKey = "total" | VisaApplicationStatus
 export type VisaApplicationStatus = "approved" | "rejected" | "incomplete" | "inProgress" | "submitted"
 
@@ -90,7 +90,7 @@ export interface VisaProfile extends /*  EducationalBackground, VisaProfileProgr
     phone: string;
 
     consultantAssignmentId?: string;
-    // consultantAssignment?: ConsultantAssignment;
+    consultantAssignment?: ConsultantAssignment;
     readinessScore?: number;
     readinessScoreReview?: ReadinessScoreReview;
     createdAt: string;

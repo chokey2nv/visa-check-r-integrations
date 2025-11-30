@@ -73,6 +73,7 @@ export interface User {
     userType: UserType;
     userStatus: UserStatus;
     defaultVisaProfileId: string;
+    referralCode: string;
     // visaProfile?: VisaProfile;
 }
 export type UserActivityLog = VisaProfileActivityLog;

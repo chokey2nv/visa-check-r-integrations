@@ -10,6 +10,7 @@ export interface GetChecklistItemResponse {
 export const getChecklistItemResponse: (keyof GetChecklistItemResponse)[] = ["checklistItem"]
 export interface GetChecklistItemResponseNestedFields {
     checklistItem: ChecklistItemFields;
+    
 }
 export const getChecklistItemResponseNestedFields: GetChecklistItemResponseNestedFields = {
     checklistItem: checklistItemQuery

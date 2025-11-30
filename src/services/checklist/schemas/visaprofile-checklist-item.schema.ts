@@ -1,4 +1,11 @@
 export const visaProfileChecklistItemSchema = {
+    createVisaProfileChecklistItems: (query: string) => `
+        mutation createVisaProfileChecklistItems($visaProfileChecklistItems: [VisaProfileChecklistItemsInput]!) {
+            createVisaProfileChecklistItems(visaProfileChecklistItems: $visaProfileChecklistItems) {
+                ${query}
+            }
+        }
+    `,
     createVisaProfileChecklistItem: (query: string) => `
         mutation createVisaProfileChecklistItem($visaProfileChecklistItem: VisaProfileChecklistItemInput!) {
             createVisaProfileChecklistItem(visaProfileChecklistItem: $visaProfileChecklistItem) {
@@ -34,4 +41,11 @@ export const visaProfileChecklistItemSchema = {
             }
         }
     `,
+    getVisaProfileChecklistItemsByChecklist: (query: string) => `
+       query getVisaProfileChecklistItemsByChecklist($checklistItem: ChecklistItemInput!, $limit: Int!, $skip: Int!) {
+           getVisaProfileChecklistItemsByChecklist(checklistItem: $checklistItem, limit: $limit, skip: $skip) {
+               ${query}
+           }     
+       }
+    `
 }

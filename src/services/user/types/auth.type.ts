@@ -1,9 +1,9 @@
-import { User } from "../../../types";
+import { User, UserType } from "../../../types";
 
 export interface LoginRequest {
     email: string;
     password: string;
-    userType: string;
+    userType: UserType;
 }
 export interface LoginResponse {
     accessToken: string;

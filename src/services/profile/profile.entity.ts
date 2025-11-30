@@ -34,6 +34,7 @@ export const visaProfileQuery: VisaProfileFields = [
     "purpose",
     "readinessScore",
     "readinessScoreReview",
+    "consultantAssignment",
 ];
 
 export const visaApplicationQuery: VisaApplicationFields = [

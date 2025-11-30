@@ -1,7 +1,7 @@
 import { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
 import { visaProfileChecklistItemSchema } from "./schemas/visaprofile-checklist-item.schema";
-import { CreateVisaProfileChecklistItemRequest, createVisaProfileChecklistItemResponse, CreateVisaProfileChecklistItemResponse, createVisaProfileChecklistItemResponseNestedFields, CreateVisaProfileChecklistItemResponseNestedFields, DeleteVisaProfileChecklistItemRequest, deleteVisaProfileChecklistItemResponse, DeleteVisaProfileChecklistItemResponse, GetVisaProfileChecklistItemRequest, getVisaProfileChecklistItemResponse, GetVisaProfileChecklistItemResponse, getVisaProfileChecklistItemResponseNestedFields, GetVisaProfileChecklistItemResponseNestedFields, listVisaProfileChecklistItemResponse, listVisaProfileChecklistItemResponseNestedFields, ListVisaProfileChecklistItemsRequest, ListVisaProfileChecklistItemsResponse, ListVisaProfileChecklistItemsResponseNestedFields, UpdateVisaProfileChecklistItemRequest, updateVisaProfileChecklistItemResponse, UpdateVisaProfileChecklistItemResponse, updateVisaProfileChecklistItemResponseNestedFields, UpdateVisaProfileChecklistItemResponseNestedFields } from "./types/visaprofile-checklist-item.type";
+import { CreateVisaProfileChecklistItemRequest, createVisaProfileChecklistItemResponse, CreateVisaProfileChecklistItemResponse, createVisaProfileChecklistItemResponseNestedFields, CreateVisaProfileChecklistItemResponseNestedFields, CreateVisaProfileChecklistItemsRequest, createVisaProfileChecklistItemsResponse, CreateVisaProfileChecklistItemsResponse, createVisaProfileChecklistItemsResponseNestedFields, CreateVisaProfileChecklistItemsResponseNestedFields, DeleteVisaProfileChecklistItemRequest, deleteVisaProfileChecklistItemResponse, DeleteVisaProfileChecklistItemResponse, GetVisaProfileChecklistItemRequest, getVisaProfileChecklistItemResponse, GetVisaProfileChecklistItemResponse, getVisaProfileChecklistItemResponseNestedFields, GetVisaProfileChecklistItemResponseNestedFields, GetVisaProfileChecklistItemsByChecklistRequest, getVisaProfileChecklistItemsByChecklistResponse, GetVisaProfileChecklistItemsByChecklistResponse, getVisaProfileChecklistItemsByChecklistResponseNestedFields, GetVisaProfileChecklistItemsByChecklistResponseNestedFields, listVisaProfileChecklistItemResponse, listVisaProfileChecklistItemResponseNestedFields, ListVisaProfileChecklistItemsRequest, ListVisaProfileChecklistItemsResponse, ListVisaProfileChecklistItemsResponseNestedFields, UpdateVisaProfileChecklistItemRequest, updateVisaProfileChecklistItemResponse, UpdateVisaProfileChecklistItemResponse, updateVisaProfileChecklistItemResponseNestedFields, UpdateVisaProfileChecklistItemResponseNestedFields } from "./types/visaprofile-checklist-item.type";
 
 export const createVisaProfileChecklistItemService = (client: GraphQLClient) => ({
     async deleteVisaProfileChecklistItem(
@@ -42,6 +42,26 @@ export const createVisaProfileChecklistItemService = (client: GraphQLClient) => 
             option
         );
         return res.data?.updateVisaProfileChecklistItem;
+    },
+    async createVisaProfileChecklistItems(
+        input: CreateVisaProfileChecklistItemsRequest,
+        fetchFields?: {
+            root?: (keyof CreateVisaProfileChecklistItemsResponse)[],
+            nestedFields?: CreateVisaProfileChecklistItemsResponseNestedFields
+        },
+        option?: RequestOption
+    ): Promise<CreateVisaProfileChecklistItemsResponse|undefined> {
+        const res = await client.request<{ createVisaProfileChecklistItems: CreateVisaProfileChecklistItemsResponse }>(
+            visaProfileChecklistItemSchema.createVisaProfileChecklistItems(
+                gqlQueryStringBuilder<CreateVisaProfileChecklistItemsResponse, CreateVisaProfileChecklistItemsResponseNestedFields>(
+                    fetchFields?.root ?? createVisaProfileChecklistItemsResponse,
+                    fetchFields?.nestedFields ?? createVisaProfileChecklistItemsResponseNestedFields
+                )
+            ), 
+            input,
+            option
+        );
+        return res.data?.createVisaProfileChecklistItems;
     },
     async createVisaProfileChecklistItem(
         input: CreateVisaProfileChecklistItemRequest,
@@ -102,6 +122,26 @@ export const createVisaProfileChecklistItemService = (client: GraphQLClient) => 
             option
         );
         return res.data?.listVisaProfileChecklistItems;
+    },
+    async getVisaProfileChecklistItemsByChecklist(
+        input: GetVisaProfileChecklistItemsByChecklistRequest,
+        fetchFields?: {
+            root?: (keyof GetVisaProfileChecklistItemsByChecklistResponse)[],
+            nestedFields?: GetVisaProfileChecklistItemsByChecklistResponseNestedFields
+        },
+        option?: RequestOption
+    ):Promise<GetVisaProfileChecklistItemsByChecklistResponse|undefined> {
+        const res = await client.request<{ getVisaProfileChecklistItemsByChecklist: GetVisaProfileChecklistItemsByChecklistResponse }>(
+            visaProfileChecklistItemSchema.getVisaProfileChecklistItemsByChecklist(
+                gqlQueryStringBuilder<GetVisaProfileChecklistItemsByChecklistResponse, GetVisaProfileChecklistItemsByChecklistResponseNestedFields>(
+                    fetchFields?.root ?? getVisaProfileChecklistItemsByChecklistResponse,
+                    fetchFields?.nestedFields ?? getVisaProfileChecklistItemsByChecklistResponseNestedFields
+                )
+            ), 
+            input,
+            option
+        );
+        return res.data?.getVisaProfileChecklistItemsByChecklist;
     }
 })
 

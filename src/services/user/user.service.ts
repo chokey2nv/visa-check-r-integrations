@@ -24,7 +24,6 @@ export const createUserService = (client: GraphQLClient) => ({
       {},
       option
     );
-    console.log({ res})
     return res.data?.me
   },
   async createUser(

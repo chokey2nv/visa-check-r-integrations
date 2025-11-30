@@ -2,6 +2,10 @@ import { ChecklistItem, VisaProfileChecklistItem } from "../../types";
 
 export type ChecklistItemFields = (keyof ChecklistItem)[];
 export type VisaProfileChecklistItemFields = (keyof VisaProfileChecklistItem)[];
+export type FileInfoFields = (keyof VisaProfileChecklistItem["fileInfo"])[];
+
+
+export const fileInfoQuery: FileInfoFields = ["name", "url", "mimeType", "size"];
 
 export const checklistItemQuery: ChecklistItemFields = [
     "id",
@@ -13,6 +17,7 @@ export const checklistItemQuery: ChecklistItemFields = [
     "category",
     "isRequired",
     "createdAt",
+    "status",
 ];
 export const visaProfileChecklistItemQuery: VisaProfileChecklistItemFields = [
     "id",
@@ -21,4 +26,6 @@ export const visaProfileChecklistItemQuery: VisaProfileChecklistItemFields = [
     "value",
     "isApproved",
     "createdAt",
+    "checklistItem",
+    "fileInfo"
 ];

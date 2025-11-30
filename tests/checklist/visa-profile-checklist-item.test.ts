@@ -12,6 +12,7 @@ describe.sequential("Visa profile checklist item API", () => {
     let visaProfileChecklistItemService: VisaProfileChecklistItemService;
     let visaProfileId: string;
     let checklistItemId: string
+    let checklistItemTitle = chance.string();
 
     beforeAll(async () => {
         console.log("🌍 [visa-profile-checklist-item.test.ts] Running once for all tests...");
@@ -42,7 +43,7 @@ describe.sequential("Visa profile checklist item API", () => {
         )
         const res3 = await checklistItemService.createChecklistItem({
             checklistItem: {
-                title: chance.string(),
+                title: checklistItemTitle,
                 formLabel: chance.string(),
                 description: chance.string(),
                 visaType: "study",
@@ -69,7 +70,28 @@ describe.sequential("Visa profile checklist item API", () => {
         expect(res).not.toBeNull();
         expect(res?.visaProfileChecklistItem).not.toBeNull();
         expect(res?.visaProfileChecklistItem.id).not.equal("");
+        // should include checklistItem 
+        expect(res?.visaProfileChecklistItem.checklistItem).not.toBeNull();
+        expect(res?.visaProfileChecklistItem.checklistItem?.title).equal(checklistItemTitle);
         visaProfileChecklistItemId = res?.visaProfileChecklistItem.id ?? "";
+    })
+    it("should create multiple visa profile checklist items", async () => {
+        const res = await visaProfileChecklistItemService.createVisaProfileChecklistItems({
+            visaProfileChecklistItems: [
+                {
+                    checklistItemId,
+                    visaProfileId,
+                    value: chance.string(),
+                },
+                {
+                    checklistItemId,
+                    visaProfileId,
+                    value: chance.string(),
+                }
+            ]
+        });
+        expect(res).not.toBeNull();
+        expect(res?.visaProfileChecklistItems.length).not.equal(0);
     })
 
     it("should get visa profile checklist item", async () => {
@@ -87,6 +109,18 @@ describe.sequential("Visa profile checklist item API", () => {
             skip: 0,
             limit: 100
         });
+        expect(res).not.toBeNull();
+        expect(res?.visaProfileChecklistItems.length).not.equal(0);
+        expect(res?.total).not.equal(0);
+    })
+    it("should list visa profile checklist items by checklist item", async () => {
+        const res = await visaProfileChecklistItemService.getVisaProfileChecklistItemsByChecklist({
+            checklistItem: {
+                title: checklistItemTitle
+            },
+            limit: 100,
+            skip: 0
+        })    
         expect(res).not.toBeNull();
         expect(res?.visaProfileChecklistItems.length).not.equal(0);
         expect(res?.total).not.equal(0);
@@ -112,4 +146,5 @@ describe.sequential("Visa profile checklist item API", () => {
         expect(res?.visaProfileChecklistItemId).not.toBeNull();
         expect(res?.visaProfileChecklistItemId).not.equal("");
     })
+    it("")
 });
