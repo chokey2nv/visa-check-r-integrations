@@ -5,15 +5,15 @@ import { activityLogSchema } from "./schemas/activity-log";
 import { GetActivityLogRequest, GetActivityLogResponse, getActivityLogResponseFields, getActivityLogResponseNestedFields, GetActivityLogResponseNestedFields, ListActivityLogsRequest, ListActivityLogsResponse, listActivityLogsResponseFields, listActivityLogsResponseNestedFields, ListActivityLogsResponseNestedFields } from "./types/activity-log.type";
 
 export const createActivityLogService = (client: GraphQLClient) => ({
-    getActivityLog(
+    async getActivityLog(
         input: GetActivityLogRequest,
         fetchFields?: {
             root?: (keyof GetActivityLogResponse)[],
             nestedFields?: GetActivityLogResponseNestedFields
         },
         option?: RequestOption
-    ): Promise<GraphQLResponse<{ getActivityLog: GetActivityLogResponse }>> {
-        return client.request<{ getActivityLog: GetActivityLogResponse }>(
+    ): Promise<GetActivityLogResponse|undefined> {
+        const res = await client.request<{ getActivityLog: GetActivityLogResponse }>(
             activityLogSchema.getActivityLog(
                 gqlQueryStringBuilder<GetActivityLogResponse, GetActivityLogResponseNestedFields>(
                     fetchFields?.root ?? getActivityLogResponseFields,
@@ -23,16 +23,17 @@ export const createActivityLogService = (client: GraphQLClient) => ({
             input,
             option
         );
+        return res.data?.getActivityLog
     },
-    listActivityLogs(
+    async listActivityLogs(
         input: ListActivityLogsRequest,
         fetchFields?: {
             root?: (keyof ListActivityLogsResponse)[],
             nestedFields?: ListActivityLogsResponseNestedFields
         },
         option?: RequestOption
-    ): Promise<GraphQLResponse<{ listActivityLogs: ListActivityLogsResponse }>> {
-        return client.request<{ listActivityLogs: ListActivityLogsResponse }>(
+    ): Promise<ListActivityLogsResponse|undefined> {
+        const res = await client.request<{ listActivityLogs: ListActivityLogsResponse }>(
             activityLogSchema.listActivityLogs(
                 gqlQueryStringBuilder<ListActivityLogsResponse, ListActivityLogsResponseNestedFields>(
                     fetchFields?.root ?? listActivityLogsResponseFields,
@@ -42,5 +43,6 @@ export const createActivityLogService = (client: GraphQLClient) => ({
             input,
             option
         );
+        return res.data?.listActivityLogs
     },
 });
