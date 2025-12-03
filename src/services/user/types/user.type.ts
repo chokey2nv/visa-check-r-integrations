@@ -37,6 +37,7 @@ export interface ListUsersRequest {
     user?: Partial<User>;
     limit: number;
     skip: number;
+    subscriptionIds?: string[]
 }
 export interface ListUsersResponse {
     users: User[];

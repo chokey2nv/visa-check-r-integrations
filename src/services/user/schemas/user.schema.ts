@@ -14,8 +14,8 @@ export const userSchema = {
         }
       `,
     listUsers: (query: string) => `
-        query listUsers($limit: Int!, $skip: Int!, $search: String, $userIds: [String], $user: UserInput) {
-          listUsers(limit: $limit, skip: $skip, search: $search, userIds: $userIds, user: $user) {
+        query listUsers($limit: Int!, $skip: Int!, $search: String, $userIds: [String], $user: UserInput, $subscriptionIds: [String]) {
+          listUsers(limit: $limit, skip: $skip, search: $search, userIds: $userIds, user: $user, subscriptionIds: $subscriptionIds) {
             ${query}
           }
         }
