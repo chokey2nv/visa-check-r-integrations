@@ -1,6 +1,7 @@
 import { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
 import { consultantAssignmentSchema } from "./schemas/consultant-assignment.schema";
+import { GetConsultantAssignmentCountRequest, GetConsultantAssignmentCountResponse, getConsultantAssignmentCountResponseFields } from "./types";
 import { 
     CreateConsultantAssignmentRequest, CreateConsultantAssignmentResponse, 
     createConsultantAssignmentResponseFields, createConsultantAssignmentResponseNestedFields, 
@@ -20,6 +21,24 @@ import {
 } from "./types/consultant-assignment.type";
 
 export const createConsultantAssignmentService = (client: GraphQLClient) => ({
+    async getConsultantAssignmentCount(
+        input: GetConsultantAssignmentCountRequest,
+        fetchFields?: {
+            root?: (keyof GetConsultantAssignmentCountResponse)[],
+        },
+        option?: RequestOption
+    ):Promise<GetConsultantAssignmentCountResponse|undefined> {
+        const res = await client.request<{ getConsultantAssignmentCount: GetConsultantAssignmentCountResponse }>(
+            consultantAssignmentSchema.getConsultantAssignmentCount(
+                gqlQueryStringBuilder<GetConsultantAssignmentCountResponse>(
+                    fetchFields?.root ?? getConsultantAssignmentCountResponseFields
+                )
+            ),
+            input,
+            option
+        );
+        return res.data?.getConsultantAssignmentCount;
+    },
     async deleteConsultantAssignment(
         input: DeleteConsultantAssignmentRequest,
         fetchFields?: {

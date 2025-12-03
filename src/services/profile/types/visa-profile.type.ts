@@ -1,9 +1,15 @@
-import { ConsultantAssignment, VisaProfile } from "../../../types";
+import { ConsultantAssignment, VisaApplicationStatus, VisaProfile } from "../../../types";
 import { UserFields, userQuery } from "../../user/user.entity";
 import { ConsultantAssignmentFields, consultantAssignmentQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery, VisaApplicationFields, visaApplicationQuery, VisaProfileFields, visaProfileQuery } from "../profile.entity";
-import { getConsultantAssignmentResponseNestedFields, GetConsultantAssignmentResponseNestedFields } from "./consultant-assignment.type";
-import { getReadinessScoreReviewResponseNestedFields, GetReadinessScoreReviewResponseNestedFields } from "./rs-review.type";
-import { GetVisaApplicationResponseNestedFields, getVisaApplicationResponseNestedFields } from "./visa-application.type";
+
+
+export interface GetConsultantAssignmentCountRequest {
+    consultantAssignment: Partial<ConsultantAssignment>;
+}
+export interface GetConsultantAssignmentCountResponse {
+    count: number;
+}
+export const getConsultantAssignmentCountResponseFields: (keyof GetConsultantAssignmentCountResponse)[] = ["count"];
 
 export interface GetVisaProfileRequest {
     visaProfile: Partial<VisaProfile>;
@@ -37,6 +43,7 @@ export interface ListVisaProfilesRequest {
     visaProfile?: Partial<VisaProfile>;
     limit: number;
     skip: number;
+    visaApplicationStatus?: VisaApplicationStatus[];
 }
 export interface ListVisaProfilesResponse {
     visaProfiles: VisaProfile[];

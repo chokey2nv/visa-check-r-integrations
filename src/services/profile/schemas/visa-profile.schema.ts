@@ -1,7 +1,7 @@
 export const visaProfileSchema = {
     listVisaProfiles: (query: string) => `
-        query listVisaProfiles($limit: Int!, $skip: Int!, $search: String, $visaProfileIds: [String], $visaProfile: VisaProfileInput) {
-            listVisaProfiles(limit: $limit, skip: $skip, search: $search, visaProfileIds: $visaProfileIds, visaProfile: $visaProfile) {
+        query listVisaProfiles($limit: Int!, $skip: Int!, $search: String, $visaProfileIds: [String], $visaProfile: VisaProfileInput, $visaApplicationStatus: [VisaApplicationStatusEnum]) {
+            listVisaProfiles(limit: $limit, skip: $skip, search: $search, visaProfileIds: $visaProfileIds, visaProfile: $visaProfile, visaApplicationStatus: $visaApplicationStatus) {
                 ${query}
             }
         }

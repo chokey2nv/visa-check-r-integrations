@@ -1,4 +1,11 @@
 export const consultantAssignmentSchema = {
+    getConsultantAssignmentCount: (query: string) => `
+        query getConsultantAssignmentCount($consultantAssignment: ConsultantAssignmentInput!) {
+            getConsultantAssignmentCount(consultantAssignment: $consultantAssignment) {
+                ${query}
+            }
+        }
+    `,
     listConsultantAssignments: (query: string) => `
         query listConsultantAssignments($limit: Int!, $skip: Int!, $search: String, $consultantAssignmentIds: [String], $consultantAssignment: ConsultantAssignmentInput) {
             listConsultantAssignments(limit: $limit, skip: $skip, search: $search, consultantAssignmentIds: $consultantAssignmentIds, consultantAssignment: $consultantAssignment) {
