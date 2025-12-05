@@ -1,13 +1,21 @@
-import { AllUserNotificationSettingKey, Subscription, User, UserActivityLog, UserSetting, UserSubscription } from "../../types";
+import { AllUserNotificationSettingKey, ConsultantInvite, Subscription, User, UserActivityLog, UserSetting, UserSubscription } from "../../types";
 
 export type UserFields = (keyof User)[];
 export type UserSettingFields = (keyof UserSetting)[]
 export type ActivityLogFields = (keyof UserActivityLog)[]
 export type SubscriptionFields = (keyof Subscription)[]
 export type UserSubscriptionFields = (keyof UserSubscription)[]
+export type ConsultantInviteFields = (keyof ConsultantInvite)[]
 
 
-
+export const consultantInviteQuery: ConsultantInviteFields = [
+    "consultantId",
+    "createdAt",
+    "email",
+    "expirationDate",
+    "id",
+    "updatedAt"
+]
 export const subscriptionQuery: SubscriptionFields = [
     "createdAt",
     "description",
