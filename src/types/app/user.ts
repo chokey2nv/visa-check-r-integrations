@@ -15,6 +15,31 @@ export type AdminDashboardMatrixKey = "visaProfileCount"|"partnerCount"|"consult
 export type AdminDashboardMatrix = Record<AdminDashboardMatrixKey, number>;
 
 export type HtmlString = string;
+
+/**
+ * message ConsultantInvite {
+    // @gotags: bson:"id"
+    string id = 1;
+    // @gotags: bson:"consultantId" 
+    string consultantId = 2;
+    // @gotags: bson:"email"
+    string email = 3;
+    // @gotags: bson:"expirationDate"
+    string expirationDate = 4;
+    // @gotags: bson:"createdAt"
+    string createdAt = 7;
+    // @gotags: bson:"updatedAt"
+    string updatedAt = 8;
+}
+ */
+export interface ConsultantInvite {
+    id: string;
+    consultantId: string;
+    email: string;
+    expirationDate: string;
+    createdAt: string;
+    updatedAt: string;
+}
 export interface Help {
     id: string;
     title: string;
