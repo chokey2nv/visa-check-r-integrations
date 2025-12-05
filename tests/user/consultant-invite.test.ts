@@ -22,10 +22,10 @@ describe("Consultant Invite API", () => {
     it("create consultant invite", async () => {
         const res = await consultantInviteService.createConsultantInvite({
             consultantInvite: {
-                consultantId: userId,
                 email: chance.email()
             }
         });
+        console.log({ res })
         expect(res).not.toBeNull();
         if(res?.consultantInvite){
             consultantInviteId = res?.consultantInvite.id ?? "";
