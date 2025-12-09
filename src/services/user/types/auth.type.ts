@@ -15,6 +15,8 @@ export const loginResponseFields: (keyof LoginResponse)[] = ["accessToken", "use
 export interface SignUpRequest {
     user: Partial<User>;
     password: string;
+    partnerReferenceCode?: string;
+    consultantCode?: string;
 }
 export type SignUpResponse = LoginResponse;
 export const signUpResponseFields = loginResponseFields;

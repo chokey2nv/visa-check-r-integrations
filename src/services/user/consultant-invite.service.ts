@@ -1,9 +1,29 @@
 import { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
-import { consultantInviteSchema } from "./schemas/consultant-invite";
-import { CreateConsultantInviteRequest, CreateConsultantInviteResponse, createConsultantInviteResponseFields, createConsultantInviteResponseNestedFields, CreateConsultantInviteResponseNestedFields, DeleteConsultantInviteRequest, DeleteConsultantInviteResponse, deleteConsultantInviteResponseFields, GetConsultantInviteRequest, GetConsultantInviteResponse, getConsultantInviteResponseFields, getConsultantInviteResponseNestedFields, GetConsultantInviteResponseNestedFields, ListConsultantInvitesRequest, ListConsultantInvitesResponse, listConsultantInvitesResponseFields, listConsultantInvitesResponseNestedFields, ListConsultantInvitesResponseNestedFields, UpdateConsultantInviteRequest, UpdateConsultantInviteResponse, updateConsultantInviteResponseFields, updateConsultantInviteResponseNestedFields, UpdateConsultantInviteResponseNestedFields } from "./types/consultant-invite.type";
+import { consultantInviteSchema } from "./schemas/consultant-invite.schema";
+import { CreateConsultantInviteRequest, CreateConsultantInviteResponse, createConsultantInviteResponseFields, createConsultantInviteResponseNestedFields, CreateConsultantInviteResponseNestedFields, DeleteConsultantInviteRequest, DeleteConsultantInviteResponse, deleteConsultantInviteResponseFields, GetConsultantInviteRequest, GetConsultantInviteResponse, getConsultantInviteResponseFields, getConsultantInviteResponseNestedFields, GetConsultantInviteResponseNestedFields, ListConsultantInvitesRequest, ListConsultantInvitesResponse, listConsultantInvitesResponseFields, listConsultantInvitesResponseNestedFields, ListConsultantInvitesResponseNestedFields, UpdateConsultantInviteRequest, UpdateConsultantInviteResponse, updateConsultantInviteResponseFields, updateConsultantInviteResponseNestedFields, UpdateConsultantInviteResponseNestedFields, VerifyConsultantInviteCodeRequest, VerifyConsultantInviteCodeResponse, verifyConsultantInviteCodeResponseFields } from "./types/consultant-invite.type";
 
 export const createConsultantInviteService = (client: GraphQLClient) => ({
+    //verify consultant invite 
+    async verifyConsultantInviteCode(
+      input: VerifyConsultantInviteCodeRequest,
+      fetchFields?: {
+        root?: (keyof VerifyConsultantInviteCodeResponse)[],
+      },
+      option?: RequestOption
+    ): Promise<VerifyConsultantInviteCodeResponse|undefined> {
+      const res = await client.request<{ verifyConsultantInviteCode: VerifyConsultantInviteCodeResponse }>(
+        consultantInviteSchema.verifyConsultantInviteCode(
+          gqlQueryStringBuilder<VerifyConsultantInviteCodeResponse>(
+            fetchFields?.root ?? verifyConsultantInviteCodeResponseFields
+          )
+        ), 
+        input,
+        option
+      );
+      return res.data?.verifyConsultantInviteCode
+    },
+
     // create 
      async createConsultantInvite(
         input: CreateConsultantInviteRequest,

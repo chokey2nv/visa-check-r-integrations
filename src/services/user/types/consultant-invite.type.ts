@@ -1,7 +1,16 @@
 import { ConsultantInvite } from "../../../types";
 import { ConsultantInviteFields, consultantInviteQuery } from "../user.entity";
 
+export interface VerifyConsultantInviteCodeRequest {
+    code: string;
+    email: string;
+}
+export interface VerifyConsultantInviteCodeResponse {
+    success: boolean;
+}
+export const verifyConsultantInviteCodeResponseFields: (keyof VerifyConsultantInviteCodeResponse)[] = ["success"];
 
+// get consultantInvite
 export interface GetConsultantInviteRequest {
     consultantInvite: Partial<ConsultantInvite>;
 }

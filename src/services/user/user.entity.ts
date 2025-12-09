@@ -9,8 +9,8 @@ export type ConsultantInviteFields = (keyof ConsultantInvite)[]
 
 
 export const consultantInviteQuery: ConsultantInviteFields = [
-    "consultantId",
     "createdAt",
+    "token",
     "email",
     "expirationDate",
     "id",

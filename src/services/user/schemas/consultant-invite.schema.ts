@@ -1,4 +1,11 @@
 export const consultantInviteSchema = {
+    verifyConsultantInviteCode: (query: string) => `
+        mutation verifyConsultantInviteCode($code: String!, $email: String!) {
+            verifyConsultantInviteCode(code: $code, email: $email) {
+                ${query}
+            }
+        }
+    `,
     createConsultantInvite: (query: string) => `
         mutation createConsultantInvite($consultantInvite: ConsultantInviteInput!) {
             createConsultantInvite(consultantInvite: $consultantInvite) {

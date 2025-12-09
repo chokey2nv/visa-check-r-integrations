@@ -37,8 +37,8 @@ export const authSchema = {
        }
     `,
     signUp: (query: string) => `
-        mutation signUp($user: UserInput!, $password: String!) {
-          signUp(user: $user, password: $password) {
+        mutation signUp($user: UserInput!, $password: String!, $partnerReferenceCode: String, $consultantCode: String) {
+          signUp(user: $user, password: $password, partnerReferenceCode: $partnerReferenceCode, consultantCode: $consultantCode) {
             ${query}
           }
         }
