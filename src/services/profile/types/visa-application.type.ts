@@ -21,8 +21,6 @@ export interface ListVisaApplicationsRequest {
     skip: number;
     search?: string;
     visaApplicationIds?: string[];
-    visaApplication?: Partial<VisaApplication>;
-    visaProfile?: Partial<VisaProfile>;
 }
 export interface ListVisaApplicationsResponse {
     visaApplications: VisaApplication[];

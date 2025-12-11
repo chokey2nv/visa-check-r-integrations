@@ -85,6 +85,7 @@ export interface User {
     referralCode: string;
     userSubscriptionId?: string;
     // visaProfile?: VisaProfile;
+    referenceCode: string;
 }
 export type UserActivityLog = VisaProfileActivityLog;
 export interface Notification {

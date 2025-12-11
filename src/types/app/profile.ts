@@ -94,6 +94,9 @@ export interface VisaProfile extends /*  EducationalBackground, VisaProfileProgr
     readinessScore?: number;
     readinessScoreReview?: ReadinessScoreReview;
     createdAt: string;
+
+    ownerId?: string;
+    referenceCode?: string;
 }
 export interface ReadinessScoreReview {
     id: string;

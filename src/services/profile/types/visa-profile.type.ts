@@ -1,4 +1,4 @@
-import { ConsultantAssignment, VisaApplicationStatus, VisaProfile } from "../../../types";
+import { ConsultantAssignment, VisaApplication, VisaApplicationStatus, VisaProfile } from "../../../types";
 import { UserFields, userQuery } from "../../user/user.entity";
 import { ConsultantAssignmentFields, consultantAssignmentQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery, VisaApplicationFields, visaApplicationQuery, VisaProfileFields, visaProfileQuery } from "../profile.entity";
 
@@ -44,6 +44,7 @@ export interface ListVisaProfilesRequest {
     limit: number;
     skip: number;
     visaApplicationStatus?: VisaApplicationStatus[];
+    VisaApplication?: Partial<VisaApplication>;
 }
 export interface ListVisaProfilesResponse {
     visaProfiles: VisaProfile[];
