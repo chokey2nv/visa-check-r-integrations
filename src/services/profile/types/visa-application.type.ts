@@ -1,4 +1,4 @@
-import { VisaApplication } from "../../../types";
+import { VisaApplication, VisaProfile } from "../../../types";
 import { VisaApplicationFields, visaApplicationQuery } from "../profile.entity";
 
 export interface GetVisaApplicationRequest {
@@ -17,11 +17,12 @@ export const getVisaApplicationResponseNestedFields: GetVisaApplicationResponseN
 
 // list visaApplications 
 export interface ListVisaApplicationsRequest {
+    limit: number;
+    skip: number;
     search?: string;
     visaApplicationIds?: string[];
     visaApplication?: Partial<VisaApplication>;
-    limit: number;
-    skip: number;
+    visaProfile?: Partial<VisaProfile>;
 }
 export interface ListVisaApplicationsResponse {
     visaApplications: VisaApplication[];

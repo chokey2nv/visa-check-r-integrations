@@ -23,8 +23,8 @@ export const visaApplicationSchema = {
         }
     `,
     listVisaApplications: (query: string) => `
-        query listVisaApplications($limit: Int!, $skip: Int!, $search: String, $visaApplicationIds: [String], $visaApplication: VisaApplicationInput) {
-            listVisaApplications(limit: $limit, skip: $skip, search: $search, visaApplicationIds: $visaApplicationIds, visaApplication: $visaApplication) {
+        query listVisaApplications($limit: Int!, $skip: Int!, $search: String, $visaApplicationIds: [String], $visaApplication: VisaApplicationInput, $visaProfile: VisaProfileInput) {
+            listVisaApplications(limit: $limit, skip: $skip, search: $search, visaApplicationIds: $visaApplicationIds, visaApplication: $visaApplication, visaProfile: $visaProfile) {
                 ${query}
             }
         }
