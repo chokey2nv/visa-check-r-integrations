@@ -47,8 +47,12 @@ export const listConsultantInvitesResponseNestedFields: ListConsultantInvitesRes
 
 // create consultantInvite 
 export type CreateConsultantInviteRequest = GetConsultantInviteRequest
-export type CreateConsultantInviteResponse = GetConsultantInviteResponse
-export const createConsultantInviteResponseFields = getConsultantInviteResponseFields;
+export type CreateConsultantInviteResponse = GetConsultantInviteResponse & {
+    registrationCode: string;
+}
+export const createConsultantInviteResponseFields: (keyof CreateConsultantInviteResponse)[] = [
+    "consultantInvite", "registrationCode"
+];
 export type CreateConsultantInviteResponseNestedFields = GetConsultantInviteResponseNestedFields
 export const createConsultantInviteResponseNestedFields = getConsultantInviteResponseNestedFields
 

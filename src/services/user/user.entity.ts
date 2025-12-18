@@ -72,4 +72,7 @@ export const userQuery: UserFields = [
     "usedRC",
     "userStatus",
     "userType",
+    "referenceCode",
+    "userSubscriptionId",
+    "referralCode"
 ]

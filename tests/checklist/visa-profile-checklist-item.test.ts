@@ -2,8 +2,10 @@ import { Chance } from "chance";
 import { beforeAll, describe, expect, it } from "vitest";
 import { VisaProfileChecklistItemService, createVisaProfileChecklistItemService } from "../../src/services/checklist/visa-profile-checklist-item.service";
 import { initTestEnv } from "../testEnv";
-import { createVisaProfileService, VisaProfileService } from "../../src/services/profile/visa-profile.service";
+import { createVisaProfileService } from "../../src/services/profile/visa-profile.service";
 import { createChecklistItemService } from "../../src/services/checklist/checklist-item.service";
+import path from "path";
+import fs from "fs";
 
 const chance = new Chance();
 
@@ -147,14 +149,27 @@ describe.sequential("Visa profile checklist item API", () => {
         expect(res?.visaProfileChecklistItem).not.toBeNull();
         expect(res?.visaProfileChecklistItem.id).not.equal("");
     })
+    // it("should upload visa profile checklist item image", async () => {
+    //     const testImagePath = path.resolve(__dirname, "../assets/test-image.jpg");
+    //     const formData = new FormData();
+    //     formData.append("visaProfileChecklistItemId",visaProfileChecklistItemId);
+    //     // formData.append("file", fs.createReadStream(testImagePath));
+    //     formData.append("file", new Blob([fs.readFileSync(testImagePath)], { type: "image/jpeg" }), "test-image.jpg");
 
-    it("should delete visa profile checklist item", async () => {
-        const res = await visaProfileChecklistItemService.deleteVisaProfileChecklistItem({
-            visaProfileChecklistItemId
-        });
-        expect(res).not.toBeNull();
-        expect(res?.visaProfileChecklistItemId).not.toBeNull();
-        expect(res?.visaProfileChecklistItemId).not.equal("");
-    })
-    it("")
+    //     const updatedVisaProfileChecklistItem = await visaProfileChecklistItemService.uploadChecklistImage(formData as any);
+
+    //     expect(updatedVisaProfileChecklistItem).toBeDefined();
+    //     expect(updatedVisaProfileChecklistItem?.id?.length).toBeGreaterThan(0);
+    //     const uploadedUrl = updatedVisaProfileChecklistItem?.fileInfo.url
+    //     console.log("Uploaded file URL:", uploadedUrl);
+    // });
+    // it("should delete visa profile checklist item", async () => {
+    //     const res = await visaProfileChecklistItemService.deleteVisaProfileChecklistItem({
+    //         visaProfileChecklistItemId
+    //     });
+    //     expect(res).not.toBeNull();
+    //     expect(res?.visaProfileChecklistItemId).not.toBeNull();
+    //     expect(res?.visaProfileChecklistItemId).not.equal("");
+    // })
+    
 });

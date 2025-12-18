@@ -43,7 +43,11 @@ export interface VisaProfileReviewComment {
     createdAt: string;
     visaProfileChecklistItemId?: string;
     visaProfileChecklistItem?: VisaProfileChecklistItem;
+    userId: string;
+    user?: User
 }
+// dev-user 
+// Connecthive!@Ogabai!#Production!$
 export interface VisaApplication {
     id: string;
     visaProfileId: string;

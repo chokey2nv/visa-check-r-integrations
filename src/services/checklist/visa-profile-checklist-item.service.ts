@@ -1,9 +1,16 @@
 import { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
+import { VisaProfileChecklistItem } from "../../types";
+import { createFileService } from "../file/file.service";
 import { visaProfileChecklistItemSchema } from "./schemas/visaprofile-checklist-item.schema";
 import { CreateVisaProfileChecklistItemRequest, createVisaProfileChecklistItemResponse, CreateVisaProfileChecklistItemResponse, createVisaProfileChecklistItemResponseNestedFields, CreateVisaProfileChecklistItemResponseNestedFields, CreateVisaProfileChecklistItemsRequest, createVisaProfileChecklistItemsResponse, CreateVisaProfileChecklistItemsResponse, createVisaProfileChecklistItemsResponseNestedFields, CreateVisaProfileChecklistItemsResponseNestedFields, DeleteVisaProfileChecklistItemRequest, deleteVisaProfileChecklistItemResponse, DeleteVisaProfileChecklistItemResponse, GetVisaProfileChecklistItemRequest, getVisaProfileChecklistItemResponse, GetVisaProfileChecklistItemResponse, getVisaProfileChecklistItemResponseNestedFields, GetVisaProfileChecklistItemResponseNestedFields, GetVisaProfileChecklistItemsByChecklistRequest, getVisaProfileChecklistItemsByChecklistResponse, GetVisaProfileChecklistItemsByChecklistResponse, getVisaProfileChecklistItemsByChecklistResponseNestedFields, GetVisaProfileChecklistItemsByChecklistResponseNestedFields, listVisaProfileChecklistItemResponse, listVisaProfileChecklistItemResponseNestedFields, ListVisaProfileChecklistItemsRequest, ListVisaProfileChecklistItemsResponse, ListVisaProfileChecklistItemsResponseNestedFields, UpdateVisaProfileChecklistItemRequest, updateVisaProfileChecklistItemResponse, UpdateVisaProfileChecklistItemResponse, updateVisaProfileChecklistItemResponseNestedFields, UpdateVisaProfileChecklistItemResponseNestedFields } from "./types/visaprofile-checklist-item.type";
 
 export const createVisaProfileChecklistItemService = (client: GraphQLClient) => ({
+    // upload file 
+    async uploadChecklistImage(form: FormData) {
+        const fileClient = createFileService(client);
+        return ((await fileClient.uploadFile<{visaProfileChecklistItem: VisaProfileChecklistItem}>(form as any)).visaProfileChecklistItem);
+    },
     async deleteVisaProfileChecklistItem(
         input: DeleteVisaProfileChecklistItemRequest,
         fetchFields?: {
