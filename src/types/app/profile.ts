@@ -20,6 +20,8 @@ export interface ConsultantAssignment {
     id: string;
     visaProfileId: string;
     consultantId: string;
+    consultantAcceptance: BooleanLiteral;
+    consultantRejection: BooleanLiteral;
     changeRequest?: BooleanLiteral;
     createdAt: string;
 
@@ -27,7 +29,10 @@ export interface ConsultantAssignment {
 
     finalReview?: string;
     finalReviewDate?: string;
+
     adminApproval?: BooleanLiteral;
+    adminComment?: string;
+    adminCommentDate?: string;
 
     consultant?: User;
 }
@@ -107,6 +112,7 @@ export interface ReadinessScoreReview {
     visaProfileId: string;
     score: number;
     review: string;
+    feedback?: string;
     // checklistItem?: VisaProfileChecklistItem;
     createdAt: string;
 }

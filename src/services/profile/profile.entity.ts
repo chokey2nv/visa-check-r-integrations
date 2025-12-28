@@ -11,6 +11,7 @@ export const readinessScoreReviewQuery: ReadinessScoreReviewFields = [
     "createdAt",
     "id",
     "review",
+    "feedback",
     "visaProfileId",
     "score",
 ];
@@ -35,6 +36,7 @@ export const visaProfileQuery: VisaProfileFields = [
     "readinessScore",
     "readinessScoreReview",
     "consultantAssignment",
+    "ownerId",
 ];
 
 export const visaApplicationQuery: VisaApplicationFields = [
@@ -47,10 +49,14 @@ export const visaApplicationQuery: VisaApplicationFields = [
 ];
 export const consultantAssignmentQuery: ConsultantAssignmentFields = [
     "adminApproval",
+    "adminComment",
+    "adminCommentDate",
     "assignmentStatus",
     "changeRequest",
     "consultant",
     "consultantId",
+    "consultantAcceptance",
+    "consultantRejection",
     "createdAt",
     "finalReview",
     "finalReview",
