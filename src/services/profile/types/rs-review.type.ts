@@ -1,6 +1,6 @@
 import { ReadinessScoreReview } from "../../../types";
 import { getChecklistItemResponseNestedFields, GetChecklistItemResponseNestedFields } from "../../checklist";
-import { ReadinessScoreReviewFields, readinessScoreReviewQuery } from "../profile.entity";
+import { DocumentReviewFields, documentReviewQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery } from "../profile.entity";
 
 export interface GetReadinessScoreReviewRequest {
     readinessScoreReview: Partial<ReadinessScoreReview>;
@@ -9,11 +9,12 @@ export interface GetReadinessScoreReviewResponse {
     readinessScoreReview: ReadinessScoreReview;
 }
 export const getReadinessScoreReviewResponseFields: (keyof GetReadinessScoreReviewResponse)[] = ["readinessScoreReview"];
-export interface GetReadinessScoreReviewResponseNestedFields extends GetChecklistItemResponseNestedFields {
+export interface GetReadinessScoreReviewResponseNestedFields {
     readinessScoreReview: ReadinessScoreReviewFields
+    documents: DocumentReviewFields
 }
 const _getReadinessScoreReviewResponseNestedFields: Omit<GetReadinessScoreReviewResponseNestedFields, "readinessScoreReview"> = {
-    ...getChecklistItemResponseNestedFields
+    documents: documentReviewQuery,
 }
 export const getReadinessScoreReviewResponseNestedFields: GetReadinessScoreReviewResponseNestedFields = {
     readinessScoreReview: readinessScoreReviewQuery,
@@ -32,7 +33,10 @@ export interface ListReadinessScoreReviewsResponse {
     readinessScoreReviews: ReadinessScoreReview[];
     total: number;
 }
-export const listReadinessScoreReviewsResponseFields: (keyof ListReadinessScoreReviewsResponse)[] = ["readinessScoreReviews", "total"];
+export const listReadinessScoreReviewsResponseFields: (keyof ListReadinessScoreReviewsResponse)[] = [
+    "readinessScoreReviews", 
+    "total"
+];
 export interface ListReadinessScoreReviewsResponseNestedFields extends Omit<GetReadinessScoreReviewResponseNestedFields, "readinessScoreReview"> {
     readinessScoreReviews: ReadinessScoreReviewFields
 }

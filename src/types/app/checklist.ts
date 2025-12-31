@@ -5,6 +5,7 @@ export interface ChecklistItem {
     id: string;
     title: string;
     formLabel: string;
+    formShortName: string;
     description: string;
     visaType: VisaType | "universal";
     inputType:  "text"|"file";

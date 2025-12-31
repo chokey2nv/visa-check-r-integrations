@@ -2,6 +2,21 @@ import { VisaProfileChecklistItem } from "./checklist";
 import { BooleanLiteral } from "./shared";
 import { User } from "./user";
 
+export interface SOPAnswer {
+    questionId: number,
+    answer: string,
+    reason?: string
+}
+export interface SOPReview {
+    id: string,
+    visaProfileId: string,
+    visaProfileChecklistItemId: string,
+    generatedSop: string,
+    answeredQuestions: SOPAnswer[],
+    unansweredQuestions: SOPAnswer[],
+    reviewedAt: string,
+    createdAt: string
+}
 
 export type VisaType = "study"|"visit"|"work"|"extendVisa"|"relocate"
 export type VisaApplicationMetricKey = "total" | VisaApplicationStatus
@@ -107,14 +122,23 @@ export interface VisaProfile extends /*  EducationalBackground, VisaProfileProgr
     ownerId?: string;
     referenceCode?: string;
 }
-export interface ReadinessScoreReview {
-    id: string;
-    visaProfileId: string;
+
+export interface DocumentReview {
+    title: string;
     score: number;
     review: string;
     feedback?: string;
-    // checklistItem?: VisaProfileChecklistItem;
+    examples?: string[];
+}
+
+export interface ReadinessScoreReview {
+    id: string;
+    visaProfileId: string;
+    overallScore: number;
+    overallAssessment: string;
+    documents: DocumentReview[];
     createdAt: string;
+    dateOfReview: string;
 }
 export interface ReadinessScore {
     id: string;

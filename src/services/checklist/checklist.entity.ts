@@ -11,6 +11,7 @@ export const checklistItemQuery: ChecklistItemFields = [
     "id",
     "title",
     "formLabel",
+    "formShortName",
     "description",
     "visaType",
     "inputType",

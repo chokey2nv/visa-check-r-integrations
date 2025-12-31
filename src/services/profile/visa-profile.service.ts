@@ -6,7 +6,7 @@ import {
     createVisaProfileResponse, createVisaProfileResponseNestedFields, 
     CreateVisaProfileResponseNestedFields, 
     DeleteVisaProfileRequest, deleteVisaProfileResponse, 
-    DeleteVisaProfileResponse, GetVisaProfileRequest, 
+    DeleteVisaProfileResponse, GenerateSOPRequest, GenerateSOPResponse, generateSOPResponse, generateSOPResponseNestedFields, GenerateSOPResponseNestedFields, GetGeneratedSOPRequest, getGeneratedSOPResponse, GetGeneratedSOPResponse, getGeneratedSOPResponseNestedFields, GetGeneratedSOPResponseNestedFields, GetVisaProfileRequest, 
     GetVisaProfileResponse, getVisaProfileResponse, getVisaProfileResponseNestedFields, 
     GetVisaProfileResponseNestedFields, 
     ListVisaProfilesRequest, ListVisaProfilesResponse, 
@@ -21,6 +21,50 @@ import {
 
 
 export const createVisaProfileService = (client: GraphQLClient) => ({
+    // sop 
+    async getGeneratedSOP(
+        input: GetGeneratedSOPRequest,
+        fetchFields?: {
+            root?: (keyof GetGeneratedSOPResponse)[],
+            nestedFields?: GetGeneratedSOPResponseNestedFields,
+        },
+        option?: RequestOption
+    ):Promise<GetGeneratedSOPResponse|undefined> {
+        const res = await client.request<{ getGeneratedSOP: GetGeneratedSOPResponse }>(
+            visaProfileSchema.getGeneratedSOP(
+                gqlQueryStringBuilder<GetGeneratedSOPResponse, GetGeneratedSOPResponseNestedFields>(
+                    fetchFields?.root ?? getGeneratedSOPResponse,
+                    fetchFields?.nestedFields ?? getGeneratedSOPResponseNestedFields
+                )
+            ),
+            input,
+            option
+        );
+        return res.data?.getGeneratedSOP;
+    },
+    async generateSOP(
+        input: GenerateSOPRequest,
+        fetchFields?: {
+            root?: (keyof GenerateSOPResponse)[],
+            nestedFields?: GenerateSOPResponseNestedFields,
+        },
+        option?: RequestOption
+    ):Promise<GenerateSOPResponse|undefined> {
+        const res = await client.request<{ generateSOP: GenerateSOPResponse }>(
+            visaProfileSchema.generateSOP(
+                gqlQueryStringBuilder<GenerateSOPResponse, GenerateSOPResponseNestedFields>(
+                    fetchFields?.root ?? generateSOPResponse,
+                    fetchFields?.nestedFields ?? generateSOPResponseNestedFields
+                )
+            ),
+            input,
+            option
+        );
+        return res.data?.generateSOP;
+    },
+
+    // visa profile
+    
     async deleteVisaProfile(
         input: DeleteVisaProfileRequest,
         fetchFields?: {

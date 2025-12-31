@@ -1,6 +1,34 @@
-import { ConsultantAssignment, VisaApplication, VisaApplicationStatus, VisaProfile } from "../../../types";
+import { ConsultantAssignment, SOPReview, VisaApplication, VisaApplicationStatus, VisaProfile } from "../../../types";
 import { UserFields, userQuery } from "../../user/user.entity";
-import { ConsultantAssignmentFields, consultantAssignmentQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery, VisaApplicationFields, visaApplicationQuery, VisaProfileFields, visaProfileQuery } from "../profile.entity";
+import { ConsultantAssignmentFields, consultantAssignmentQuery, DocumentReviewFields, documentReviewQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery, SOPAnswerFields, sopAnswerQuery, SOPReviewFields, sopReviewQuery, VisaApplicationFields, visaApplicationQuery, VisaProfileFields, visaProfileQuery } from "../profile.entity";
+// sop 
+export interface GenerateSOPRequest {
+    sopReview: Partial<SOPReview>;
+}
+export interface GenerateSOPResponse {
+    sopReview: SOPReview;
+}
+export const generateSOPResponse: (keyof GenerateSOPResponse)[] = ["sopReview"];
+export interface GenerateSOPResponseNestedFields {
+    sopReview: SOPReviewFields;
+    answeredQuestions: SOPAnswerFields;
+    unansweredQuestions: SOPAnswerFields;
+}
+export const _generateSOPResponseNestedFields: Omit<GenerateSOPResponseNestedFields, "sopReview"> = {
+    answeredQuestions: sopAnswerQuery,
+    unansweredQuestions: sopAnswerQuery
+}
+export const generateSOPResponseNestedFields: GenerateSOPResponseNestedFields = {
+    ..._generateSOPResponseNestedFields,
+    sopReview: sopReviewQuery
+}
+
+// get generated sop 
+export type GetGeneratedSOPRequest = GenerateSOPRequest
+export type GetGeneratedSOPResponse = GenerateSOPResponse
+export const getGeneratedSOPResponse = generateSOPResponse;
+export type GetGeneratedSOPResponseNestedFields = GenerateSOPResponseNestedFields
+export const getGeneratedSOPResponseNestedFields = generateSOPResponseNestedFields
 
 
 export interface GetConsultantAssignmentCountRequest {
@@ -22,12 +50,14 @@ export interface GetVisaProfileResponseNestedFields {
     visaProfile: VisaProfileFields
     visaApplication: VisaApplicationFields;
     readinessScoreReview: ReadinessScoreReviewFields;
+    documents: DocumentReviewFields;
     consultantAssignment: ConsultantAssignmentFields;
     consultant: UserFields;
 }
 export const _getVisaProfileResponseNestedFields: Omit<GetVisaProfileResponseNestedFields, "visaProfile"> = {
     visaApplication: visaApplicationQuery,
     readinessScoreReview: readinessScoreReviewQuery,
+    documents: documentReviewQuery,
     consultantAssignment: consultantAssignmentQuery,
     consultant: userQuery
 }

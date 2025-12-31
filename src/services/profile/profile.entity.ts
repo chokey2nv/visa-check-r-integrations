@@ -1,19 +1,48 @@
-import { ReadinessScoreReview, VisaApplication, VisaProfile, ConsultantAssignment, VisaProfileReviewComment } from "../../types";
+import { ReadinessScoreReview, VisaApplication, VisaProfile, ConsultantAssignment, VisaProfileReviewComment, DocumentReview, SOPAnswer, SOPReview } from "../../types";
 
 export type ReadinessScoreReviewFields = (keyof ReadinessScoreReview)[];
 export type VisaProfileFields = (keyof VisaProfile)[];
 export type VisaApplicationFields = (keyof VisaApplication)[];
 export type ConsultantAssignmentFields = (keyof ConsultantAssignment)[]
 export type VisaProfileReviewCommentFields = (keyof VisaProfileReviewComment)[]
+export type DocumentReviewFields = (keyof DocumentReview)[]
+
+export type SOPAnswerFields = (keyof SOPAnswer)[]
+export type SOPReviewFields = (keyof SOPReview)[]
 
 
+export const sopAnswerQuery: SOPAnswerFields = [
+    "answer",
+    "questionId",
+    "reason"
+]
+export const sopReviewQuery: SOPReviewFields = [
+    "answeredQuestions",
+    "createdAt",
+    "generatedSop",
+    "id",
+    "reviewedAt",
+    "unansweredQuestions",
+    "visaProfileChecklistItemId",
+    "visaProfileId",
+]
+
+
+export const documentReviewQuery: DocumentReviewFields = [
+    "title", 
+    "examples", 
+    "review", 
+    "score", 
+    "feedback"
+]
 export const readinessScoreReviewQuery: ReadinessScoreReviewFields = [
     "createdAt",
+    "dateOfReview",
+    "documents",
     "id",
-    "review",
-    "feedback",
+    "overallAssessment",
+    "overallScore",
     "visaProfileId",
-    "score",
 ];
 export const visaProfileQuery: VisaProfileFields = [
     "visaApplication",

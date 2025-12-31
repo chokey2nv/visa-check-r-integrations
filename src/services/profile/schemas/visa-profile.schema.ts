@@ -1,4 +1,20 @@
 export const visaProfileSchema = {
+    // get generated sop 
+    getGeneratedSOP: (query: string) => `
+        query getGeneratedSOP($sopReview: SopReviewInput!) {
+            getGeneratedSOP(sopReview: $sopReview) {
+                ${query}
+            }
+        }
+    `,
+    // generate sop 
+    generateSOP: (query: string) => `
+        mutation generateSOP($sopReview: SopReviewInput!) {
+            generateSOP(sopReview: $sopReview) {
+                ${query}
+            }
+        }
+    `,
     listVisaProfiles: (query: string) => `
         query listVisaProfiles($limit: Int!, $skip: Int!, $search: String, $visaProfileIds: [String], $visaProfile: VisaProfileInput, $visaApplicationStatus: [VisaApplicationStatusEnum], $visaApplication: VisaApplicationInput) {
             listVisaProfiles(limit: $limit, skip: $skip, search: $search, visaProfileIds: $visaProfileIds, visaProfile: $visaProfile, visaApplicationStatus: $visaApplicationStatus, visaApplication: $visaApplication) {
