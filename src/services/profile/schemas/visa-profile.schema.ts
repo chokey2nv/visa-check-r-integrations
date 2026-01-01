@@ -1,4 +1,13 @@
 export const visaProfileSchema = {
+    // get job 
+    getJob: (query: string) => `
+        query getJob($job: JobInput!) {
+            getJob(job: $job) {
+                ${query}
+            }
+        }
+    `,
+
     // get generated sop 
     getGeneratedSOP: (query: string) => `
         query getGeneratedSOP($sopReview: SopReviewInput!) {

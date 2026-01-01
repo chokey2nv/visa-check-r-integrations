@@ -1,14 +1,31 @@
 import { ConsultantAssignment, SOPReview, VisaApplication, VisaApplicationStatus, VisaProfile } from "../../../types";
+import { Job } from "../../../types/app/job";
 import { UserFields, userQuery } from "../../user/user.entity";
-import { ConsultantAssignmentFields, consultantAssignmentQuery, DocumentReviewFields, documentReviewQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery, SOPAnswerFields, sopAnswerQuery, SOPReviewFields, sopReviewQuery, VisaApplicationFields, visaApplicationQuery, VisaProfileFields, visaProfileQuery } from "../profile.entity";
+import { ConsultantAssignmentFields, consultantAssignmentQuery, DocumentReviewFields, documentReviewQuery, JobFields, jobQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery, SOPAnswerFields, sopAnswerQuery, SOPReviewFields, sopReviewQuery, VisaApplicationFields, visaApplicationQuery, VisaProfileFields, visaProfileQuery } from "../profile.entity";
+// job 
+export interface GetJobRequest {
+    job: Partial<Job>;
+}
+export interface GetJobResponse {
+    job: Job;
+}
+export const getJobResponse: (keyof GetJobResponse)[] = ["job"];
+export interface GetJobResponseNestedFields {
+    job: JobFields;
+}
+export const getJobResponseNestedFields: GetJobResponseNestedFields = {
+    job: jobQuery
+}
+
 // sop 
 export interface GenerateSOPRequest {
     sopReview: Partial<SOPReview>;
 }
 export interface GenerateSOPResponse {
     sopReview: SOPReview;
+    jobId?: string;
 }
-export const generateSOPResponse: (keyof GenerateSOPResponse)[] = ["sopReview"];
+export const generateSOPResponse: (keyof GenerateSOPResponse)[] = ["sopReview", "jobId"];
 export interface GenerateSOPResponseNestedFields {
     sopReview: SOPReviewFields;
     answeredQuestions: SOPAnswerFields;

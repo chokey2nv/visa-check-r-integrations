@@ -6,7 +6,7 @@ import {
     createVisaProfileResponse, createVisaProfileResponseNestedFields, 
     CreateVisaProfileResponseNestedFields, 
     DeleteVisaProfileRequest, deleteVisaProfileResponse, 
-    DeleteVisaProfileResponse, GenerateSOPRequest, GenerateSOPResponse, generateSOPResponse, generateSOPResponseNestedFields, GenerateSOPResponseNestedFields, GetGeneratedSOPRequest, getGeneratedSOPResponse, GetGeneratedSOPResponse, getGeneratedSOPResponseNestedFields, GetGeneratedSOPResponseNestedFields, GetVisaProfileRequest, 
+    DeleteVisaProfileResponse, GenerateSOPRequest, GenerateSOPResponse, generateSOPResponse, generateSOPResponseNestedFields, GenerateSOPResponseNestedFields, GetGeneratedSOPRequest, getGeneratedSOPResponse, GetGeneratedSOPResponse, getGeneratedSOPResponseNestedFields, GetGeneratedSOPResponseNestedFields, GetJobRequest, getJobResponse, GetJobResponse, getJobResponseNestedFields, GetJobResponseNestedFields, GetVisaProfileRequest, 
     GetVisaProfileResponse, getVisaProfileResponse, getVisaProfileResponseNestedFields, 
     GetVisaProfileResponseNestedFields, 
     ListVisaProfilesRequest, ListVisaProfilesResponse, 
@@ -21,6 +21,27 @@ import {
 
 
 export const createVisaProfileService = (client: GraphQLClient) => ({
+    // job 
+    async getJob(
+        input: GetJobRequest,
+        fetchFields?: {
+            root?: (keyof GetJobResponse)[],
+            nestedFields?: GetJobResponseNestedFields,
+        },
+        option?: RequestOption
+    ):Promise<GetJobResponse|undefined> {
+        const res = await client.request<{ getJob: GetJobResponse }>(
+            visaProfileSchema.getJob(
+                gqlQueryStringBuilder<GetJobResponse, GetJobResponseNestedFields>(
+                    fetchFields?.root ?? getJobResponse,
+                    fetchFields?.nestedFields ?? getJobResponseNestedFields
+                )
+            ),
+            input,
+            option
+        );
+        return res.data?.getJob;
+    },
     // sop 
     async getGeneratedSOP(
         input: GetGeneratedSOPRequest,

@@ -1,4 +1,5 @@
 import { ReadinessScoreReview, VisaApplication, VisaProfile, ConsultantAssignment, VisaProfileReviewComment, DocumentReview, SOPAnswer, SOPReview } from "../../types";
+import { Job } from "../../types/app/job";
 
 export type ReadinessScoreReviewFields = (keyof ReadinessScoreReview)[];
 export type VisaProfileFields = (keyof VisaProfile)[];
@@ -9,6 +10,20 @@ export type DocumentReviewFields = (keyof DocumentReview)[]
 
 export type SOPAnswerFields = (keyof SOPAnswer)[]
 export type SOPReviewFields = (keyof SOPReview)[]
+
+export type JobFields = (keyof Job)[]
+
+export const jobQuery: JobFields = [
+    "createdAt",
+    "error",
+    "id",
+    "message",
+    "progress",
+    "result",
+    "status",
+    "type",
+    "updatedAt",
+]
 
 
 export const sopAnswerQuery: SOPAnswerFields = [
