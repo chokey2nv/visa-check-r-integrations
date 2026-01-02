@@ -47,8 +47,13 @@ export const listReadinessScoreReviewsResponseNestedFields: ListReadinessScoreRe
 
 // create readinessScoreReview 
 export type CreateReadinessScoreReviewRequest = GetReadinessScoreReviewRequest
-export type CreateReadinessScoreReviewResponse = GetReadinessScoreReviewResponse
-export const createReadinessScoreReviewResponseFields = getReadinessScoreReviewResponseFields;
+export interface CreateReadinessScoreReviewResponse extends GetReadinessScoreReviewResponse {
+    jobId: string;
+}
+export const createReadinessScoreReviewResponseFields:(keyof CreateReadinessScoreReviewResponse)[] = [
+    "readinessScoreReview",
+    "jobId"
+];
 export type CreateReadinessScoreReviewResponseNestedFields = GetReadinessScoreReviewResponseNestedFields
 export const createReadinessScoreReviewResponseNestedFields = getReadinessScoreReviewResponseNestedFields
 
