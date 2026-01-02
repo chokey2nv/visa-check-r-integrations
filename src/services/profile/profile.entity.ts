@@ -109,12 +109,17 @@ export const consultantAssignmentQuery: ConsultantAssignmentFields = [
     "visaProfileId",
 ]
 export const visaProfileReviewCommentQuery: VisaProfileReviewCommentFields = [
-    "visaProfileChecklistItem",
-    "visaProfileChecklistItemId",
+    "adminComment",
+    "adminCommentDate",
     "comment",
     "consultantAssignmentId",
     "createdAt",
     "id",
     "isRoot",
     "replyTo",
+    "user",
+    "userId",
+    "visaProfileChecklistItem",
+    "visaProfileChecklistItemId",
+    "visaProfileId",
 ]
