@@ -1,4 +1,5 @@
 import { VisaProfileReviewComment } from "../../../types";
+import { getUserResponseNestedFields, GetUserResponseNestedFields } from "../../user";
 import { VisaProfileReviewCommentFields, visaProfileReviewCommentQuery } from "../profile.entity";
 
 export interface GetVisaProfileReviewCommentRequest {
@@ -8,11 +9,15 @@ export interface GetVisaProfileReviewCommentResponse {
     visaProfileReviewComment: VisaProfileReviewComment;
 }
 export const getVisaProfileReviewCommentResponseFields: (keyof GetVisaProfileReviewCommentResponse)[] = ["visaProfileReviewComment"];
-export interface GetVisaProfileReviewCommentResponseNestedFields {
+export interface GetVisaProfileReviewCommentResponseNestedFields extends GetUserResponseNestedFields {
     visaProfileReviewComment: VisaProfileReviewCommentFields
 }
+export const _getVisaProfileReviewCommentResponseNestedFields: Omit<GetVisaProfileReviewCommentResponseNestedFields, "visaProfileReviewComment"> = {
+    ...getUserResponseNestedFields,
+}
 export const getVisaProfileReviewCommentResponseNestedFields: GetVisaProfileReviewCommentResponseNestedFields = {
-    visaProfileReviewComment: visaProfileReviewCommentQuery
+    visaProfileReviewComment: visaProfileReviewCommentQuery,
+    ..._getVisaProfileReviewCommentResponseNestedFields,
 }
 
 // list visaProfileReviewComments 
@@ -28,11 +33,12 @@ export interface ListVisaProfileReviewCommentsResponse {
     total: number;
 }
 export const listVisaProfileReviewCommentsResponseFields: (keyof ListVisaProfileReviewCommentsResponse)[] = ["visaProfileReviewComments", "total"];
-export interface ListVisaProfileReviewCommentsResponseNestedFields {
+export interface ListVisaProfileReviewCommentsResponseNestedFields extends Omit<GetVisaProfileReviewCommentResponseNestedFields, "visaProfileReviewComment"> {
     visaProfileReviewComments: VisaProfileReviewCommentFields
 }
 export const listVisaProfileReviewCommentsResponseNestedFields: ListVisaProfileReviewCommentsResponseNestedFields = {
-    visaProfileReviewComments: visaProfileReviewCommentQuery
+    visaProfileReviewComments: visaProfileReviewCommentQuery,
+    ..._getVisaProfileReviewCommentResponseNestedFields,
 }
 
 // create visaProfileReviewComment 

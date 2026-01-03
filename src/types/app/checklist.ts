@@ -26,7 +26,7 @@ export interface VisaProfileChecklistItem {
     visaProfileId: string;
     checklistItemId: string;
     value: string;
-    isApproved: BooleanLiteral;
+    visaProfileChecklistItemStatus: "pending"|"approved"|"rejected";
     createdAt: string;
     checklistItem?: ChecklistItem;
     fileInfo: FileInfo

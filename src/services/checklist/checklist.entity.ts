@@ -25,7 +25,7 @@ export const visaProfileChecklistItemQuery: VisaProfileChecklistItemFields = [
     "visaProfileId",
     "checklistItemId",
     "value",
-    "isApproved",
+    "visaProfileChecklistItemStatus",
     "createdAt",
     "checklistItem",
     "fileInfo"
