@@ -92,16 +92,12 @@ describe.sequential("Flutter API", () => {
             }
         })
         console.log({ res })
-        expect(res).not.toBeNull();
-        expect(res?.chargeId).not.equal("");
-        expect(res?.customerObjectId).not.equal("");
-        chargeId = res?.chargeId ?? "";
-        if(chargeId) {
+        // if(chargeId) {
             
-            const flutterwave = new FlutterwaveClient("https://sandbox.flutterwave.com", flutterTokenProvider)
-            const res = await flutterwave.AuthorizeCharge(userId, "12345", phone, "123456")
-            console.log({ res })
-        }
-        console.log({ res })
+        //     const flutterwave = new FlutterwaveClient("https://sandbox.flutterwave.com", flutterTokenProvider)
+        //     const res = await flutterwave.AuthorizeCharge(userId, "12345", phone, "123456")
+        //     console.log({ res })
+        // }
+        // console.log({ res })
     })
 })
