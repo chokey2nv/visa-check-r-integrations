@@ -2,8 +2,8 @@ import { Chance } from "chance";
 import { beforeAll, describe, expect, it } from "vitest";
 import { createUserService, UserService } from "../../src/services/user/user.service";
 import { initTestEnv } from "../testEnv";
-import { createFlutterwaveService, FlutterwaveService, encryptAES } from "../../src/services/flutterwave";
-import { BackendTokenProvider, FlutterwaveClient } from "../../src/flutterwave"
+import { createFlutterwaveService, FlutterwaveService, encryptAES } from "../../src/services";
+import { BackendTokenProvider } from "../../src/flutterwave"
 import { generateRandomString } from "../../src/helpers/funcs"
 
 const chance = new Chance();
