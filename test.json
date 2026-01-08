@@ -1,0 +1,44 @@
+{
+    "status": "failed",
+    "error": {
+        "type": "REQUEST_NOT_VALID",
+        "code": "10400",
+        "message": "Request is not valid",
+        "validation_errors": [
+            {
+                "field_name": "card.encrypted_cvv",
+                "message": "value must not be empty"
+            },
+            {
+                "field_name": "card.nonce",
+                "message": "must be an alphanumeric string of length 12"
+            },
+            {
+                "field_name": "card.encrypted_expiry_month",
+                "message": "value must not be empty"
+            },
+            {
+                "field_name": "card.encrypted_card_number",
+                "message": "value must not be empty"
+            },
+            {
+                "field_name": "card.nonce",
+                "message": "size must be between 12 and 12"
+            },
+            {
+                "field_name": "card.encrypted_expiry_year",
+                "message": "value must not be empty"
+            }
+        ]
+    },
+    "request": {
+        "card": {
+            "encrypted_card_number": "451991223554",
+            "encrypted_expiry_month": "12",
+            "encrypted_expiry_year": "2030",
+            "encrypted_cvv": "hnmKZARTdR5vsDJQpx+JNZYuRQ==",
+            "nonce": "HFk1DsgLx3KS"
+        },
+        "userId": "695f0e07a7c5257569707fbe"
+    }
+}

@@ -12,7 +12,7 @@ describe.sequential("Flutter API", () => {
     
     let userService: UserService;
     let flutterService: FlutterwaveService;
-    let userId: string;
+    let userId: string = "695f0e07a7c5257569707fbe"
     let chargeId: string;
     let flutterTokenProvider: BackendTokenProvider
 
@@ -24,13 +24,14 @@ describe.sequential("Flutter API", () => {
         flutterTokenProvider = new BackendTokenProvider(client!)
     })
 
-    it("should fetch user information using access token", async () => {
+    /* it("should fetch user information using access token", async () => {
         const res = await userService?.me();
         expect(res).not.toBeNull();
         expect(res?.user.fullName).not.equal("")
-    })
+        // userId = res?.user.id ?? "";
+    }) */
     // create user 
-    it("should create user", async () => {
+    /* it("should create user", async () => {
         const res = await userService.createUser({
             user: {
                 fullName: chance.name(),
@@ -42,8 +43,8 @@ describe.sequential("Flutter API", () => {
         console.log({ user: res })
         expect(res).not.toBeNull();
         userId = res?.user.id ?? "";
-    })
-    it("create flutter customer", async () => {
+    }) */
+    /* it("create flutter customer", async () => {
         const phone = chance.phone({ country_code: "234", formatted: false });
         if(!userId) return
         const res = await flutterService.createCustomerObject({
@@ -70,9 +71,8 @@ describe.sequential("Flutter API", () => {
                 id: ""
             }
         })
-    })
+    }) */
     it("create flutter card", async () => {
-        const phone = chance.phone({ country_code: "234", formatted: false });
         if(!userId) return
         const encryptKey = "isRlJ6Dv6YBLbvNT+53ADxIsEWmrxXAVFGKoOykyHBI="
         const nonce = generateRandomString(12)

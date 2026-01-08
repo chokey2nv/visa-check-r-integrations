@@ -63,6 +63,7 @@ export class GraphQLClient {
         headers: options?.headers ?? {},
         cacheOptions: options?.cacheOptions
     };
+    // console.log({ ctx: JSON.stringify(ctx)})
     const resCtx: ResponseContext<T> = {};
     const runner = compose(this.middlewares);
     await runner<T>(ctx, resCtx);
