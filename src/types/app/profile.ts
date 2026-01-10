@@ -2,6 +2,13 @@ import { VisaProfileChecklistItem } from "./checklist";
 import { BooleanLiteral } from "./shared";
 import { User } from "./user";
 
+export interface VisaProfileCount {
+    total: number;
+    assigned: number;
+    consultantRequests: number;
+    acceptedByConsultant: number;
+    rejectedByConsultant: number;
+}
 export interface SOPAnswer {
     questionId: number,
     answer: string,
@@ -108,7 +115,7 @@ export interface VisaProfile extends /*  EducationalBackground, VisaProfileProgr
     fullName: string;
     email: string;
     applicationId?: string;
-    purpose: VisaType; // visaType, in program
+    purpose: VisaType; // client, partner, consultant
     destinationCountry: string; // in detail 
     visaApplication?: VisaApplication
     phone: string;

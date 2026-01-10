@@ -1,7 +1,31 @@
-import { ConsultantAssignment, SOPReview, VisaApplication, VisaApplicationStatus, VisaProfile } from "../../../types";
+import { ConsultantAssignment, SOPReview, VisaApplication, VisaApplicationStatus, VisaProfile, VisaProfileCount } from "../../../types";
 import { Job } from "../../../types/app/job";
 import { UserFields, userQuery } from "../../user/user.entity";
-import { ConsultantAssignmentFields, consultantAssignmentQuery, DocumentReviewFields, documentReviewQuery, JobFields, jobQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery, SOPAnswerFields, sopAnswerQuery, SOPReviewFields, sopReviewQuery, VisaApplicationFields, visaApplicationQuery, VisaProfileFields, visaProfileQuery } from "../profile.entity";
+import { ConsultantAssignmentFields, consultantAssignmentQuery, DocumentReviewFields, documentReviewQuery, JobFields, jobQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery, SOPAnswerFields, sopAnswerQuery, SOPReviewFields, sopReviewQuery, VisaApplicationFields, visaApplicationQuery, VisaProfileCountFields, visaProfileCountQuery, VisaProfileFields, visaProfileQuery } from "../profile.entity";
+
+
+export interface GetVisaProfileCountByFilterRequest {
+    visaProfile: Partial<VisaProfile>;
+}
+export interface GetVisaProfileCountByFilterResponse {
+    count: number;
+}
+export const getVisaProfileCountByFilterResponse:(keyof GetVisaProfileCountByFilterResponse)[] = [
+    "count"
+]
+
+
+export interface GetVisaProfileCountResponse {
+    visaProfileCount: VisaProfileCount;
+}
+export const getVisaProfileCountResponse: (keyof GetVisaProfileCountResponse)[] = ["visaProfileCount"];
+export interface GetVisaProfileCountResponseNestedFields {
+    visaProfileCount: VisaProfileCountFields;
+}
+export const getVisaProfileCountResponseNestedFields: GetVisaProfileCountResponseNestedFields = {
+    visaProfileCount: visaProfileCountQuery
+}
+
 // job 
 export interface GetJobRequest {
     job: Partial<Job>;

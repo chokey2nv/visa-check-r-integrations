@@ -1,5 +1,37 @@
-import { User, UserSetting } from "../../../types";
-import { UserFields, userQuery, UserSettingFields, userSettingQuery } from "../user.entity";
+import { User, UserCount, UserSetting, UserType, UserTypeStatusCount } from "../../../types";
+import { UserCountFields, userCountQuery, UserFields, userQuery, UserSettingFields, userSettingQuery, UserTypeStatusCountFields, userTypeStatusCountQuery } from "../user.entity";
+
+
+export interface GetUserTypeStatusCountRequest {
+    userType: UserType;
+}
+export interface GetUserTypeStatusCountResponse {
+    userTypeStatusCount: UserTypeStatusCount;
+}
+export const getUserTypeStatusCountResponse:(keyof GetUserTypeStatusCountResponse)[] = [
+    "userTypeStatusCount"
+]
+export interface GetUserTypeStatusCountResponseNestedFields {
+    userTypeStatusCount: UserTypeStatusCountFields;
+}
+export const getUserTypeStatusCountResponseNestedFields:GetUserTypeStatusCountResponseNestedFields = {
+    userTypeStatusCount: userTypeStatusCountQuery
+}
+
+
+
+export interface GetUserCountResponse {
+    userCount: UserCount;
+}
+export const getUserCountResponse:(keyof GetUserCountResponse)[] = [
+    "userCount"
+]
+export interface GetUserCountResponseNestedFields {
+    userCount: UserCountFields;
+}
+export const getUserCountResponseNestedFields:GetUserCountResponseNestedFields = {
+    userCount: userCountQuery
+}
 
 export interface MeRequest {}
 export interface MeResponse {

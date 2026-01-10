@@ -55,8 +55,8 @@ export interface FlutterwaveCustomer {
     phone: FlutterCustomerPhone;
 }
 
-export type CreateCustomerObjectResponse =
-  FlutterApiResponse<FlutterwaveCustomer>;
+// export type CreateCustomerObjectResponse =
+//   FlutterApiResponse<FlutterwaveCustomer>;
 
 /* ----------------------------------
  * Card

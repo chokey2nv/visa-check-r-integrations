@@ -1,9 +1,7 @@
 import { Chance } from "chance";
 import { beforeAll, describe, expect, it } from "vitest";
-import { createUserService, UserService } from "../../src/services/user/user.service";
+import { UserService } from "../../src/services/user/user.service";
 import { initTestEnv } from "../testEnv";
-import { createFlutterwaveService } from "../../src/services";
-import { BackendTokenProvider } from "../../src/flutterwave"
 import { createPaystackService, PaystackService } from "../../src/services/subscription/paystack.service";
 
 const chance = new Chance();

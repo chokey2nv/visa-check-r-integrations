@@ -16,6 +16,20 @@ export type AdminDashboardMatrix = Record<AdminDashboardMatrixKey, number>;
 
 export type HtmlString = string;
 
+export interface UserTypeStatusCount {
+    userType: UserType;
+    total: number;
+    active: number;
+    inactive: number;
+}
+
+export interface UserCount {
+    clients: number;
+    partners: number;
+    consultants: number;
+    applications: number;
+}
+
 export interface ConsultantInvite {
     id: string;
     email: string;

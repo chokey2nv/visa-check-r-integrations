@@ -1,4 +1,4 @@
-import { AllUserNotificationSettingKey, ConsultantInvite, Subscription, User, UserActivityLog, UserSetting, UserSubscription } from "../../types";
+import { AllUserNotificationSettingKey, ConsultantInvite, Subscription, User, UserActivityLog, UserCount, UserSetting, UserSubscription, UserTypeStatusCount } from "../../types";
 
 export type UserFields = (keyof User)[];
 export type UserSettingFields = (keyof UserSetting)[]
@@ -6,6 +6,22 @@ export type ActivityLogFields = (keyof UserActivityLog)[]
 export type SubscriptionFields = (keyof Subscription)[]
 export type UserSubscriptionFields = (keyof UserSubscription)[]
 export type ConsultantInviteFields = (keyof ConsultantInvite)[]
+export type UserCountFields = (keyof UserCount)[];
+export type UserTypeStatusCountFields = (keyof UserTypeStatusCount)[]
+
+
+export const userTypeStatusCountQuery: UserTypeStatusCountFields = [
+    "active",
+    "inactive",
+    "total",
+    "userType"
+]
+export const userCountQuery:UserCountFields = [
+    "applications",
+    "clients",
+    "consultants",
+    "partners"
+]
 
 
 export const consultantInviteQuery: ConsultantInviteFields = [

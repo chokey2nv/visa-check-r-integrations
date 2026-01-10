@@ -1,11 +1,49 @@
-import { create } from "domain";
 import type { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
-import { GraphQLResponse } from "../../types";
 import { userSchema } from "./schemas/user.schema";
-import { CreateUserRequest, CreateUserResponse, createUserResponseFields, createUserResponseNestedFields, CreateUserResponseNestedFields, DeleteUserRequest, DeleteUserResponse, deleteUserResponseFields, GetUserRequest, GetUserResponse, getUserResponseFields, getUserResponseNestedFields, GetUserResponseNestedFields, ListUsersRequest, ListUsersResponse, listUsersResponseFields, listUsersResponseNestedFields, ListUsersResponseNestedFields, MeResponse, meResponseFields, meResponseNestedFields, MeResponseNestedFields, UpdateUserRequest, UpdateUserResponse, updateUserResponseFields, updateUserResponseNestedFields, UpdateUserResponseNestedFields } from "./types/user.type";
+import { CreateUserRequest, CreateUserResponse, createUserResponseFields, createUserResponseNestedFields, CreateUserResponseNestedFields, DeleteUserRequest, DeleteUserResponse, deleteUserResponseFields, getUserCountResponse, GetUserCountResponse, getUserCountResponseNestedFields, GetUserCountResponseNestedFields, GetUserRequest, GetUserResponse, getUserResponseFields, getUserResponseNestedFields, GetUserResponseNestedFields, GetUserTypeStatusCountRequest, getUserTypeStatusCountResponse, GetUserTypeStatusCountResponse, getUserTypeStatusCountResponseNestedFields, GetUserTypeStatusCountResponseNestedFields, ListUsersRequest, ListUsersResponse, listUsersResponseFields, listUsersResponseNestedFields, ListUsersResponseNestedFields, MeResponse, meResponseFields, meResponseNestedFields, MeResponseNestedFields, UpdateUserRequest, UpdateUserResponse, updateUserResponseFields, updateUserResponseNestedFields, UpdateUserResponseNestedFields } from "./types/user.type";
 
 export const createUserService = (client: GraphQLClient) => ({  
+
+  async getUserTypeStatusCount(
+    input: GetUserTypeStatusCountRequest,
+    fetchFields?: {
+      root?: (keyof GetUserTypeStatusCountResponse)[],
+      nestedFields?: GetUserTypeStatusCountResponseNestedFields
+    },
+    option?: RequestOption
+  ): Promise<GetUserTypeStatusCountResponse|undefined> {
+    const res = await client.request<{ getUserTypeStatusCount: GetUserTypeStatusCountResponse }>(
+      userSchema.getUserTypeStatusCount(
+        gqlQueryStringBuilder<GetUserTypeStatusCountResponse, GetUserTypeStatusCountResponseNestedFields>(
+          fetchFields?.root ?? getUserTypeStatusCountResponse,
+          fetchFields?.nestedFields ?? getUserTypeStatusCountResponseNestedFields
+        )
+      ), 
+      input,
+      option
+    );
+    return res.data?.getUserTypeStatusCount
+  },
+  async getUserCount(
+    fetchFields?: {
+      root?: (keyof GetUserCountResponse)[],
+      nestedFields?: GetUserCountResponseNestedFields
+    },
+    option?: RequestOption
+  ): Promise<GetUserCountResponse|undefined>{
+    const res = await client.request<{ getUserCount: GetUserCountResponse }>(
+      userSchema.getUserCount(
+        gqlQueryStringBuilder<GetUserCountResponse, GetUserCountResponseNestedFields>(
+          fetchFields?.root ?? getUserCountResponse,
+          fetchFields?.nestedFields ?? getUserCountResponseNestedFields
+        )
+      ), 
+      {},
+      option
+    );
+    return res.data?.getUserCount
+  },
   async me(
     fetchFields?: {
       root?: (keyof MeResponse)[],
@@ -13,7 +51,6 @@ export const createUserService = (client: GraphQLClient) => ({
     },
     option?: RequestOption
   ): Promise<MeResponse|undefined> {
-    console.log({ fetchFields })
     const res = await client.request<{ me: MeResponse }>(
       userSchema.me(
         gqlQueryStringBuilder<MeResponse, MeResponseNestedFields>(

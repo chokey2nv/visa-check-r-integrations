@@ -1,4 +1,18 @@
 export const visaProfileSchema = {
+    getVisaProfileCountByFilter: (query: string) => `
+        query getVisaProfileCountByFilter($visaProfile: VisaProfileInput!) {
+            getVisaProfileCountByFilter(visaProfile: $visaProfile) {
+                ${query}
+            }
+        }
+    `,
+    getVisaProfileCount: (query: string) => `
+        query getVisaProfileCount {
+            getVisaProfileCount {
+                ${query}
+            }
+        }
+    `,
     // get job 
     getJob: (query: string) => `
         query getJob($job: JobInput!) {

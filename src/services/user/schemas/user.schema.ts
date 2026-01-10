@@ -1,4 +1,18 @@
 export const userSchema = {
+    getUserTypeStatusCount: (query: string) => `
+      query getUserTypeStatusCount($userType:  UserTypeEnum!){
+        getUserTypeStatusCount(userType: $userType) {
+          ${query}
+        } 
+      }
+    `,
+    getUserCount: (query: string) => `
+      query getUserCount {
+        getUserCount {
+          ${query}
+        }
+      }
+    `,
     me: (query: string) => `
         query me {
           me {
