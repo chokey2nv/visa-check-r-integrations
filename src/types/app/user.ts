@@ -16,6 +16,14 @@ export type AdminDashboardMatrix = Record<AdminDashboardMatrixKey, number>;
 
 export type HtmlString = string;
 
+export interface ContactMessage {
+    // name email reason message 
+    fullName: string;
+    email: string;
+    reason: string;
+    message: string;
+}
+
 export interface UserTypeStatusCount {
     userType: UserType;
     total: number;

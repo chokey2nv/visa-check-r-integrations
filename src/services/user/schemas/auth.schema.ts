@@ -1,5 +1,11 @@
 export const authSchema = {
-    // sendOTP(email: String!)
+    contactUs: (query: string) => `
+      mutation contactUs($contactMessage: ContactMessageInput!) {
+        contactUs(contactMessage: $contactMessage) {
+          ${query}
+        }
+      }
+    `,
     sendOTP: (query: string) => `
         mutation sendOTP($email: String!) {
           sendOTP(email: $email) {

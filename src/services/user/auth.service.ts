@@ -3,6 +3,9 @@ import { gqlQueryStringBuilder } from "../../helpers/query";
 import { GraphQLResponse } from "../../types";
 import {authSchema} from "./schemas/auth.schema";
 import { 
+  ContactUsRequest,
+  ContactUsResponse,
+  contactUsResponseFields,
   LoginRequest, LoginResponse, 
   loginResponseFields, ResetPasswordRequest, ResetPasswordResponse, resetPasswordResponseFields, SendOTPRequest, SendOTPResponse, sendOTPResponseFields, SignUpRequest, 
   SignUpResponse, 
@@ -17,6 +20,24 @@ import {
 
 
 export const createAuthService = (client: GraphQLClient) => ({
+  async contactUs(
+    input: ContactUsRequest,
+    fetchFields?: {
+      root?: (keyof ContactUsResponse)[],
+    },
+    option?: RequestOption
+  ): Promise<ContactUsResponse|undefined> {
+    const res = await client.request<{ contactUs: ContactUsResponse }>(
+      authSchema.contactUs(
+        gqlQueryStringBuilder<ContactUsResponse>(
+          fetchFields?.root ?? contactUsResponseFields
+        )
+      ), 
+      input,
+      option
+    );
+    return res.data?.contactUs
+  },
   async changePassword(
     input: UpdatePasswordRequest,
     fetchFields?: {

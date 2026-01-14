@@ -76,10 +76,11 @@ describe.sequential("Flutter API", () => {
         if(!userId) return
         const encryptKey = "isRlJ6Dv6YBLbvNT+53ADxIsEWmrxXAVFGKoOykyHBI="
         const nonce = generateRandomString(12)
-        const encrypted_card_number = await encryptAES("451991223554", encryptKey, nonce)
-        const encrypted_expiry_month = await encryptAES("12", encryptKey, nonce)
-        const encrypted_expiry_year = await encryptAES("2030", encryptKey, nonce)
-        const encrypted_cvv = await encryptAES("123", encryptKey, nonce)
+        // 5531886652142950	09/32	564
+        const encrypted_card_number = await encryptAES("5531886652142950", encryptKey, nonce)
+        const encrypted_expiry_month = await encryptAES("09", encryptKey, nonce)
+        const encrypted_expiry_year = await encryptAES("32", encryptKey, nonce)
+        const encrypted_cvv = await encryptAES("564", encryptKey, nonce)
        
         const res = await flutterService.createCardObject({
             userId, 

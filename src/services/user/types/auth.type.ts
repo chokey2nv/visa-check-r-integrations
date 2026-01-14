@@ -1,4 +1,16 @@
-import { User, UserType } from "../../../types";
+import { ContactMessage, User, UserType } from "../../../types";
+
+
+
+
+export interface ContactUsRequest {
+    contactMessage: Partial<ContactMessage>;
+}
+export interface ContactUsResponse {
+    success: boolean;
+}
+export const contactUsResponseFields: (keyof ContactUsResponse)[] = ["success"];
+
 
 export interface LoginRequest {
     email: string;

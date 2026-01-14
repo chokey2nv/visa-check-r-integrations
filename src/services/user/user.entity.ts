@@ -1,4 +1,4 @@
-import { AllUserNotificationSettingKey, ConsultantInvite, Subscription, User, UserActivityLog, UserCount, UserSetting, UserSubscription, UserTypeStatusCount } from "../../types";
+import { ConsultantInvite, ContactMessage, Subscription, User, UserActivityLog, UserCount, UserSetting, UserSubscription, UserTypeStatusCount } from "../../types";
 
 export type UserFields = (keyof User)[];
 export type UserSettingFields = (keyof UserSetting)[]
@@ -8,8 +8,17 @@ export type UserSubscriptionFields = (keyof UserSubscription)[]
 export type ConsultantInviteFields = (keyof ConsultantInvite)[]
 export type UserCountFields = (keyof UserCount)[];
 export type UserTypeStatusCountFields = (keyof UserTypeStatusCount)[]
+export type ContactMessageFields = (keyof ContactMessage)[]
 
 
+
+
+export const contactMessageQuery: ContactMessageFields = [
+    "email",
+    "message",
+    "fullName",
+    "reason",
+]
 export const userTypeStatusCountQuery: UserTypeStatusCountFields = [
     "active",
     "inactive",
