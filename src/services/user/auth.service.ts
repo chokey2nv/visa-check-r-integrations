@@ -1,6 +1,5 @@
 import { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
-import { GraphQLResponse } from "../../types";
 import {authSchema} from "./schemas/auth.schema";
 import { 
   ContactUsRequest,
