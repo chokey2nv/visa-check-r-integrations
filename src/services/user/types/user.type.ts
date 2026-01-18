@@ -37,8 +37,9 @@ export interface MeRequest {}
 export interface MeResponse {
     user: User;
     userSetting: UserSetting;
+    visaProfileCount: number
 }
-export const meResponseFields: (keyof MeResponse)[] = ["user", "userSetting"];
+export const meResponseFields: (keyof MeResponse)[] = ["user", "userSetting", "visaProfileCount"];
 export interface MeResponseNestedFields {
     user: UserFields
     userSetting: UserSettingFields

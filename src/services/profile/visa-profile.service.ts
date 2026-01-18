@@ -6,7 +6,7 @@ import {
     createVisaProfileResponse, createVisaProfileResponseNestedFields, 
     CreateVisaProfileResponseNestedFields, 
     DeleteVisaProfileRequest, deleteVisaProfileResponse, 
-    DeleteVisaProfileResponse, GenerateSOPRequest, GenerateSOPResponse, generateSOPResponse, generateSOPResponseNestedFields, GenerateSOPResponseNestedFields, GetGeneratedSOPRequest, getGeneratedSOPResponse, GetGeneratedSOPResponse, getGeneratedSOPResponseNestedFields, GetGeneratedSOPResponseNestedFields, GetJobRequest, getJobResponse, GetJobResponse, getJobResponseNestedFields, GetJobResponseNestedFields, GetVisaProfileCountByFilterRequest, getVisaProfileCountByFilterResponse, GetVisaProfileCountByFilterResponse, getVisaProfileCountResponse, GetVisaProfileCountResponse, getVisaProfileCountResponseNestedFields, GetVisaProfileCountResponseNestedFields, GetVisaProfileRequest, 
+    DeleteVisaProfileResponse, GenerateSOPRequest, GenerateSOPResponse, generateSOPResponse, generateSOPResponseNestedFields, GenerateSOPResponseNestedFields, GetGeneratedSOPRequest, getGeneratedSOPResponse, GetGeneratedSOPResponse, getGeneratedSOPResponseNestedFields, GetGeneratedSOPResponseNestedFields, GetJobRequest, getJobResponse, GetJobResponse, getJobResponseNestedFields, GetJobResponseNestedFields, GetVisaProfileCountByFilterRequest, getVisaProfileCountByFilterResponse, GetVisaProfileCountByFilterResponse, GetVisaProfileCountRequest, getVisaProfileCountResponse, GetVisaProfileCountResponse, getVisaProfileCountResponseNestedFields, GetVisaProfileCountResponseNestedFields, GetVisaProfileRequest, 
     GetVisaProfileResponse, getVisaProfileResponse, getVisaProfileResponseNestedFields, 
     GetVisaProfileResponseNestedFields, 
     ListVisaProfilesRequest, ListVisaProfilesResponse, 
@@ -40,12 +40,19 @@ export const createVisaProfileService = (client: GraphQLClient) => ({
         return res.data?.getVisaProfileCountByFilter;
     },
     async getVisaProfileCount(
+        input: GetVisaProfileCountRequest,
         fetchFields?: {
             root?: (keyof GetVisaProfileCountResponse)[],
             nestedFields?: GetVisaProfileCountResponseNestedFields
         },
         option?: RequestOption
     ):Promise<GetVisaProfileCountResponse|undefined> {
+        console.log(visaProfileSchema.getVisaProfileCount(
+                gqlQueryStringBuilder<GetVisaProfileCountResponse, GetVisaProfileCountResponseNestedFields>(
+                    fetchFields?.root ?? getVisaProfileCountResponse,
+                    fetchFields?.nestedFields ?? getVisaProfileCountResponseNestedFields
+                )
+            ))
         const res = await client.request<{ getVisaProfileCount: GetVisaProfileCountResponse }>(
             visaProfileSchema.getVisaProfileCount(
                 gqlQueryStringBuilder<GetVisaProfileCountResponse, GetVisaProfileCountResponseNestedFields>(
@@ -53,6 +60,7 @@ export const createVisaProfileService = (client: GraphQLClient) => ({
                     fetchFields?.nestedFields ?? getVisaProfileCountResponseNestedFields
                 )
             ),
+            input,
             option
         );
         return res.data?.getVisaProfileCount;

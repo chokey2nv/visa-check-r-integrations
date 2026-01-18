@@ -1,4 +1,4 @@
-import { ChecklistItem, VisaProfileChecklistItem } from "../../../types";
+import { ChecklistItem, VisaProfile, VisaProfileChecklistItem } from "../../../types";
 import { ChecklistItemFields, checklistItemQuery, FileInfoFields, fileInfoQuery, VisaProfileChecklistItemFields, visaProfileChecklistItemQuery } from "../checklist.entity";
 
 export interface GetVisaProfileChecklistItemRequest {
@@ -46,6 +46,7 @@ export const listVisaProfileChecklistItemResponseNestedFields: ListVisaProfileCh
 }
 // get visa profile checklist items by checklist item
 export interface GetVisaProfileChecklistItemsByChecklistRequest {
+    visaProfile?: Partial<VisaProfile>;
     checklistItem?: Partial<ChecklistItem>;
     visaProfileChecklistItem?: Partial<VisaProfileChecklistItem>;
     search?: string;

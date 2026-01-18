@@ -9,6 +9,7 @@ describe.sequential("Visa Profile API", () => {
     
     let visaProfileService: VisaProfileService;
     let userId: string;
+    let visaProfileId: string;
 
     beforeAll(async () => {
         console.log("🌍 [visa-profile.test.ts] Running once for all tests...");
@@ -20,12 +21,28 @@ describe.sequential("Visa Profile API", () => {
     })
 
     it("should create visa profile for user", async () => {
-        const res = await visaProfileService.getVisaProfileCount({
+        const res = await visaProfileService.createVisaProfile({
             visaProfile: {
+                countryOfBirth: chance.country(),
+                dateOfBirth: chance.date().toISOString(),
+                destinationCountry: chance.country(),
+                userIds: [userId],
+                countriesVisitedInPast5Years: [chance.country(), chance.country(), chance.country(), chance.country(), chance.country()],
             }
         });
-        console.log({ res })
+        expect(res).not.toBeNull();
+        expect(res?.visaProfile).not.toBeNull();
+        expect(res?.visaProfile.id).not.equal("");
+        visaProfileId = res?.visaProfile.id ?? "";
     })
-
-   
+    it("should get visa profile count for user", async () => {
+        const res = await visaProfileService.getVisaProfileCount({
+            visaProfile: {
+                ownerId: userId!
+            }
+        });
+        console.log({ res });
+        expect(res).not.toBeNull();
+        expect(res?.visaProfileCount).not.toBeNull();
+    })
 })

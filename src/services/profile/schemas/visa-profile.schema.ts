@@ -7,8 +7,8 @@ export const visaProfileSchema = {
         }
     `,
     getVisaProfileCount: (query: string) => `
-        query getVisaProfileCount {
-            getVisaProfileCount {
+        query getVisaProfileCount($visaProfile: VisaProfileInput!) {
+            getVisaProfileCount(visaProfile: $visaProfile) {
                 ${query}
             }
         }

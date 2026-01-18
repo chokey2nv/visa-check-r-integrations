@@ -15,6 +15,9 @@ export const getVisaProfileCountByFilterResponse:(keyof GetVisaProfileCountByFil
 ]
 
 
+export interface GetVisaProfileCountRequest {
+    visaProfile: Partial<VisaProfile>
+}
 export interface GetVisaProfileCountResponse {
     visaProfileCount: VisaProfileCount;
 }
