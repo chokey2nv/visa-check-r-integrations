@@ -1,5 +1,15 @@
-import { VisaApplication, VisaProfile } from "../../../types";
+import { VisaApplication } from "../../../types";
 import { VisaApplicationFields, visaApplicationQuery } from "../profile.entity";
+
+
+export interface GetVisaApplicationCountRequest {
+    visaApplication: Partial<VisaApplication>;
+}
+export interface GetVisaApplicationCountResponse {
+    count: number
+}
+export const getVisaApplicationCountResponseFields: (keyof GetVisaApplicationCountResponse)[] = ["count"];
+
 
 export interface GetVisaApplicationRequest {
     visaApplication: Partial<VisaApplication>;

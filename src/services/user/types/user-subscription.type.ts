@@ -1,5 +1,6 @@
 import { UserSubscription } from "../../../types";
-import { SubscriptionFields, subscriptionQuery, UserFields, userQuery, UserSubscriptionFields, userSubscriptionQuery } from "../user.entity";
+import { SubscriptionFields, subscriptionQuery, userCreditQuery, UserFields, userQuery, UserSubscriptionFields, userSubscriptionQuery } from "../user.entity";
+import { GetUserResponseNestedFields } from "./user.type";
 
 
 export interface GetUserSubscriptionRequest {
@@ -9,7 +10,7 @@ export interface GetUserSubscriptionResponse {
     userSubscription: UserSubscription;
 }
 export const getUserSubscriptionResponseFields: (keyof GetUserSubscriptionResponse)[] = ["userSubscription"];
-export interface GetUserSubscriptionResponseNestedFields {
+export interface GetUserSubscriptionResponseNestedFields extends Omit<GetUserResponseNestedFields, "user"> {
     userSubscription: UserSubscriptionFields
     subscriber: UserFields;
     subscription: SubscriptionFields;
@@ -17,6 +18,7 @@ export interface GetUserSubscriptionResponseNestedFields {
 export const _getUserSubscriptionResponseNestedFields: Omit<GetUserSubscriptionResponseNestedFields, "userSubscription"> = {
     subscriber: userQuery,
     subscription: subscriptionQuery,
+    userCredit: userCreditQuery,
 }
 export const getUserSubscriptionResponseNestedFields: GetUserSubscriptionResponseNestedFields = {
     ..._getUserSubscriptionResponseNestedFields,

@@ -14,6 +14,13 @@ export type ConsultantDashboardMetricCount = Record<ConsultantDashboardMetricCou
 export type AdminDashboardMatrixKey = "visaProfileCount"|"partnerCount"|"consultantCount"|"pendingReviewCount"
 export type AdminDashboardMatrix = Record<AdminDashboardMatrixKey, number>;
 
+export interface UserCredit {
+    id: string;
+    userId: string;
+    amount: number;
+    createdAt: string
+}
+
 export type HtmlString = string;
 
 export interface ContactMessage {
@@ -108,6 +115,7 @@ export interface User {
     userSubscriptionId?: string;
     // visaProfile?: VisaProfile;
     referenceCode: string;
+    userCredit: UserCredit;
 }
 export type UserActivityLog = VisaProfileActivityLog;
 export interface Notification {

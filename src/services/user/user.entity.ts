@@ -1,5 +1,6 @@
-import { ConsultantInvite, ContactMessage, Subscription, User, UserActivityLog, UserCount, UserSetting, UserSubscription, UserTypeStatusCount } from "../../types";
+import { ConsultantInvite, ContactMessage, Subscription, User, UserActivityLog, UserCount, UserCredit, UserSetting, UserSubscription, UserTypeStatusCount } from "../../types";
 
+export type UserCreditFields = (keyof UserCredit)[]
 export type UserFields = (keyof User)[];
 export type UserSettingFields = (keyof UserSetting)[]
 export type ActivityLogFields = (keyof UserActivityLog)[]
@@ -84,6 +85,12 @@ export const userSettingQuery: UserSettingFields = [
     "userId"
        
 ]
+export const userCreditQuery: UserCreditFields = [
+    "amount",
+    "createdAt",
+    "id",
+    "userId"
+]
 export const userQuery: UserFields = [
     "country", 
     "createdAt",
@@ -99,5 +106,6 @@ export const userQuery: UserFields = [
     "userType",
     "referenceCode",
     "userSubscriptionId",
-    "referralCode"
+    "referralCode",
+    "userCredit"
 ]

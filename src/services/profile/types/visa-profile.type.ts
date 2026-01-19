@@ -1,6 +1,7 @@
 import { ConsultantAssignment, SOPReview, VisaApplication, VisaApplicationStatus, VisaProfile, VisaProfileCount } from "../../../types";
 import { Job } from "../../../types/app/job";
-import { UserFields, userQuery } from "../../user/user.entity";
+import { GetUserResponseNestedFields } from "../../user";
+import { userCreditQuery, UserFields, userQuery } from "../../user/user.entity";
 import { ConsultantAssignmentFields, consultantAssignmentQuery, DocumentReviewFields, documentReviewQuery, JobFields, jobQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery, SOPAnswerFields, sopAnswerQuery, SOPReviewFields, sopReviewQuery, VisaApplicationFields, visaApplicationQuery, VisaProfileCountFields, visaProfileCountQuery, VisaProfileFields, visaProfileQuery } from "../profile.entity";
 
 
@@ -90,20 +91,22 @@ export interface GetVisaProfileResponse {
     visaProfile: VisaProfile;
 }
 export const getVisaProfileResponse: (keyof GetVisaProfileResponse)[] = ["visaProfile"];
-export interface GetVisaProfileResponseNestedFields {
+export interface GetVisaProfileResponseNestedFields extends Omit<GetUserResponseNestedFields, "user"> {
     visaProfile: VisaProfileFields
     visaApplication: VisaApplicationFields;
     readinessScoreReview: ReadinessScoreReviewFields;
     documents: DocumentReviewFields;
     consultantAssignment: ConsultantAssignmentFields;
     consultant: UserFields;
+
 }
 export const _getVisaProfileResponseNestedFields: Omit<GetVisaProfileResponseNestedFields, "visaProfile"> = {
     visaApplication: visaApplicationQuery,
     readinessScoreReview: readinessScoreReviewQuery,
     documents: documentReviewQuery,
     consultantAssignment: consultantAssignmentQuery,
-    consultant: userQuery
+    consultant: userQuery,
+    userCredit: userCreditQuery
 }
 export const getVisaProfileResponseNestedFields: GetVisaProfileResponseNestedFields = {
     ..._getVisaProfileResponseNestedFields,

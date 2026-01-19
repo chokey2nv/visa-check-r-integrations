@@ -1,6 +1,12 @@
 export const visaApplicationSchema = {
 
-
+    getVisaApplicationCount: (query: string) => `
+        query getVisaApplicationCount($visaApplication: VisaApplicationInput!) {
+            getVisaApplicationCount(visaApplication: $visaApplication) {
+                ${query}
+            }
+        }
+    `,
     deleteVisaApplication: (query: string) => `
         mutation deleteVisaApplication($visaApplicationId: String!) {
             deleteVisaApplication(visaApplicationId: $visaApplicationId) {

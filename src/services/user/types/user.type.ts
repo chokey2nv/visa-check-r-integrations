@@ -1,5 +1,5 @@
 import { User, UserCount, UserSetting, UserType, UserTypeStatusCount } from "../../../types";
-import { UserCountFields, userCountQuery, UserFields, userQuery, UserSettingFields, userSettingQuery, UserTypeStatusCountFields, userTypeStatusCountQuery } from "../user.entity";
+import { UserCountFields, userCountQuery, UserCreditFields, userCreditQuery, UserFields, userQuery, UserSettingFields, userSettingQuery, UserTypeStatusCountFields, userTypeStatusCountQuery } from "../user.entity";
 
 
 export interface GetUserTypeStatusCountRequest {
@@ -40,13 +40,14 @@ export interface MeResponse {
     visaProfileCount: number
 }
 export const meResponseFields: (keyof MeResponse)[] = ["user", "userSetting", "visaProfileCount"];
-export interface MeResponseNestedFields {
+export interface MeResponseNestedFields extends GetUserResponseNestedFields {
     user: UserFields
     userSetting: UserSettingFields
 }
 export const meResponseNestedFields: MeResponseNestedFields = {
     user: userQuery,
-    userSetting: userSettingQuery
+    userSetting: userSettingQuery,
+    userCredit: userCreditQuery,
 }
 
 export interface GetUserRequest {
@@ -57,10 +58,15 @@ export interface GetUserResponse {
 }
 export const getUserResponseFields: (keyof GetUserResponse)[] = ["user"];
 export interface GetUserResponseNestedFields {
-    user: UserFields
+    user: UserFields;
+    userCredit: UserCreditFields;
+}
+export const _getUserResponseNestedFields: Omit<GetUserResponseNestedFields, "user"> = {
+    userCredit: userCreditQuery,
 }
 export const getUserResponseNestedFields: GetUserResponseNestedFields = {
-    user: userQuery
+    ..._getUserResponseNestedFields,
+    user: userQuery,
 }
 
 // list users 
@@ -77,10 +83,11 @@ export interface ListUsersResponse {
     total: number;
 }
 export const listUsersResponseFields: (keyof ListUsersResponse)[] = ["users", "total"];
-export interface ListUsersResponseNestedFields {
+export interface ListUsersResponseNestedFields extends Omit<GetUserResponseNestedFields, "user"> {
     users: UserFields
 }
 export const listUsersResponseNestedFields: ListUsersResponseNestedFields = {
+    ..._getUserResponseNestedFields,
     users: userQuery
 }
 
