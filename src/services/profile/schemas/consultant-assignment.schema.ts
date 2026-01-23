@@ -1,4 +1,11 @@
 export const consultantAssignmentSchema = {
+    getConsultantClientStats: (query: string) => `
+        query getConsultantClientStats($consultantId: String!) {
+            getConsultantClientStats(consultantId: $consultantId) {
+                ${query}
+            }
+        }
+    `,
     getConsultantAssignmentCount: (query: string) => `
         query getConsultantAssignmentCount($consultantAssignment: ConsultantAssignmentInput!) {
             getConsultantAssignmentCount(consultantAssignment: $consultantAssignment) {

@@ -110,4 +110,12 @@ describe("Consultant Assignment API", () => {
         expect(res?.consultantAssignmentId).not.toBeNull();
         expect(res?.consultantAssignmentId).not.equal("");
     })
+
+    it("should get consultant client stats", async () => {
+        const res = await consultantAssignmentService.getConsultantClientStats({
+            consultantId,
+        })
+        console.log({ res: JSON.stringify(res, null, 2) });
+        expect(res).not.toBeNull();
+    })
 });

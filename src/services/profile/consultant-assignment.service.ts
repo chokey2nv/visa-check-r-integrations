@@ -17,10 +17,35 @@ import {
     UpdateConsultantAssignmentResponse,
     updateConsultantAssignmentResponseFields,
     UpdateConsultantAssignmentResponseNestedFields,
-    updateConsultantAssignmentResponseNestedFields
+    updateConsultantAssignmentResponseNestedFields,
+    GetConsultantClientStatsRequest,
+    GetConsultantClientStatsResponse,
+    GetConsultantClientStatsResponseNestedFields,
+    getConsultantClientStatsResponseFields,
+    getConsultantClientStatsResponseNestedFields
 } from "./types/consultant-assignment.type";
 
 export const createConsultantAssignmentService = (client: GraphQLClient) => ({
+    async getConsultantClientStats(
+        input: GetConsultantClientStatsRequest,
+        fetchFields?: {
+            root?: (keyof GetConsultantClientStatsResponse)[],
+            nestedFields?: GetConsultantClientStatsResponseNestedFields
+        },
+        option?: RequestOption
+    ):Promise<GetConsultantClientStatsResponse|undefined> {
+        const res = await client.request<{ getConsultantClientStats: GetConsultantClientStatsResponse }>(
+            consultantAssignmentSchema.getConsultantClientStats(
+                gqlQueryStringBuilder<GetConsultantClientStatsResponse, GetConsultantClientStatsResponseNestedFields>(
+                    fetchFields?.root ?? getConsultantClientStatsResponseFields,
+                    fetchFields?.nestedFields ?? getConsultantClientStatsResponseNestedFields
+                )
+            ),
+            input,
+            option
+        );
+        return res.data?.getConsultantClientStats;
+    },
     async getConsultantAssignmentCount(
         input: GetConsultantAssignmentCountRequest,
         fetchFields?: {

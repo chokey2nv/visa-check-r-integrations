@@ -1,10 +1,28 @@
-import { ConsultantAssignment } from "../../../types"
+import { ConsultantAssignment, ConsultantClientStats } from "../../../types"
 import { getUserResponseNestedFields, GetUserResponseNestedFields } from "../../user";
 import { UserFields, userQuery } from "../../user/user.entity";
-import { ConsultantAssignmentFields, consultantAssignmentQuery } from "../profile.entity";
+import { ConsultantAssignmentFields, consultantAssignmentQuery, ConsultantClientStatsFields, consultantClientStatsQuery } from "../profile.entity";
 import { getVisaProfileResponseNestedFields, GetVisaProfileResponseNestedFields } from "./visa-profile.type";
 
 
+
+
+export interface GetConsultantClientStatsRequest {
+    consultantId: string;
+}
+export interface GetConsultantClientStatsResponse {
+    consultantClientStats: ConsultantClientStats;
+}
+export const getConsultantClientStatsResponseFields: (keyof GetConsultantClientStatsResponse)[] = ["consultantClientStats"];
+export interface GetConsultantClientStatsResponseNestedFields {
+    consultantClientStats: ConsultantClientStatsFields
+}
+export const getConsultantClientStatsResponseNestedFields: GetConsultantClientStatsResponseNestedFields = {
+    consultantClientStats: consultantClientStatsQuery
+}
+
+
+// get consultantAssignment
 export interface GetConsultantAssignmentRequest {
     consultantAssignment: Partial<ConsultantAssignment>;
 }

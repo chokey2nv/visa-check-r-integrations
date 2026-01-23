@@ -73,16 +73,16 @@ export const activityLogQuery: ActivityLogFields = [
     "userIdOrVisaProfileId"
 ]
 export const userSettingQuery: UserSettingFields = [
-    "applicationStatus",
-    "checklistIncompleteReminder",
-    "clientUpdate",
-    "docReviewFeedback",
     "id",
-    "newMessageFromClient",
-    "newMessageFromConsultant",
     "notificationChannels",
-    "submissionConfirmation",
-    "userId"
+    "userId",
+    "userSettingApplicationStatus",
+    "userSettingChecklistIncompleteReminder",
+    "userSettingClientUpdate",
+    "userSettingDocReviewFeedback",
+    "userSettingNewMessageFromClient",
+    "userSettingNewMessageFromConsultant",
+    "userSettingSubmissionConfirmation",
        
 ]
 export const userCreditQuery: UserCreditFields = [

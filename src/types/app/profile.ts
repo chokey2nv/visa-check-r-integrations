@@ -2,6 +2,15 @@ import { VisaProfileChecklistItem } from "./checklist";
 import { BooleanLiteral } from "./shared";
 import { User } from "./user";
 
+
+export interface ConsultantClientStats {
+    consultantId: string;
+    total: number;
+    awaitingReview: number;
+    completedReview: number;
+    pendingAdminReview: number;
+    newReview: number;
+}
 export interface VisaProfileCount {
     total: number;
     assigned: number;
