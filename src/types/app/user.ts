@@ -3,8 +3,16 @@ import { BooleanLiteral } from "./shared";
 
 
 export type SettingNotificationChannelKey = "push" | "sms" | "email"
-export type UserNotificationSettingKey = "applicationStatus"|"docReviewFeedback"|"submissionConfirmation"|"checklistIncompleteReminder"|"newMessageFromConsultant"
-export type ConsultantNotificationSettingKey = "clientUpdate"|"docReviewFeedback"|"newMessageFromClient"
+export type UserNotificationSettingKey = 
+    "userSettingApplicationStatus"|
+    "userSettingDocReviewFeedback"|
+    "userSettingSubmissionConfirmation"|
+    "userSettingChecklistIncompleteReminder"|
+    "userSettingNewMessageFromConsultant"
+export type ConsultantNotificationSettingKey = 
+    "userSettingClientUpdate"|
+    "userSettingDocReviewFeedback"|
+    "userSettingNewMessageFromClient"
 export type AllUserNotificationSettingKey = UserNotificationSettingKey | ConsultantNotificationSettingKey
 export type Plan = "free" | "silver" | "gold"
 export type PartnerDashboardMatrixKey = "totalClients"|"submittedApplications"|"approvedApplications"|"rejectedApplications"|"inProgressApplications"
