@@ -130,6 +130,7 @@ export const consultantAssignmentQuery: ConsultantAssignmentFields = [
     "finalReviewDate",
     "id",
     "visaProfileId",
+    "assignmentDate",
 ]
 export const visaProfileReviewCommentQuery: VisaProfileReviewCommentFields = [
     "adminComment",

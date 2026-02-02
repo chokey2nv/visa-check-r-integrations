@@ -64,6 +64,7 @@ export interface ConsultantAssignment {
     adminApproval?: BooleanLiteral;
     adminComment?: string;
     adminCommentDate?: string;
+    assignmentDate?: string;
 
     consultant?: User;
 }
