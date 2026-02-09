@@ -1,6 +1,6 @@
 {
     "name": "@visa-check-r/integrations",
-    "version": "0.0.61",
+    "version": "0.0.62",
     "description": "integrations for visa check r",
     "keywords": [
         "graphql",
@@ -50,7 +50,8 @@
         "test:watch": "vitest"
     },
     "dependencies": {
-        "crypto": "^1.0.1"
+        "crypto": "^1.0.1",
+        "dayjs": "^1.11.19"
     },
     "devDependencies": {
         "@types/chance": "^1.1.7",

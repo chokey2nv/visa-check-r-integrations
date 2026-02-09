@@ -1,6 +1,7 @@
 import { VisaProfileChecklistItem } from "./checklist";
 import { BooleanLiteral } from "./shared";
 import { User } from "./user";
+import { type Dayjs } from "dayjs"
 
 
 export interface ConsultantClientStats {
@@ -98,9 +99,9 @@ export interface EducationalBackground {
 }
 
 export interface VisaProfileDetails {
-    dateOfBirth: string;
+    dateOfBirth: string | Dayjs;
     countryOfBirth: string;
-    maritalStatus: "married"| "single";
+    maritalStatus: "married"| "single" | "divorced";
     highestLevelOfEducation: "primary" | "secondary" | "tertiary" | "post-secondary" | "masters" | "doctorate";
     nationality: string;
     countryOfResidence: string;
