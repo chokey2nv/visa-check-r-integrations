@@ -43,8 +43,8 @@ describe.sequential("RS Review API", () => {
         const res = await readinessScoreReviewService.createReadinessScoreReview({
             readinessScoreReview: {
                 visaProfileId,
-                score: 2,
-                review: chance.paragraph()
+                overallScore: 2,
+                overallAssessment: chance.paragraph()
             }
         });
         expect(res).not.toBeNull();
@@ -66,7 +66,7 @@ describe.sequential("RS Review API", () => {
         const res = await readinessScoreReviewService.updateReadinessScoreReview({
             readinessScoreReviewId,
             readinessScoreReview: {
-                review: chance.paragraph()
+                overallAssessment: chance.paragraph()
             }
         });
         expect(res).not.toBeNull();
