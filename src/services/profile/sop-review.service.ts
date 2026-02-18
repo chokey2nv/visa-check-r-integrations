@@ -1,5 +1,5 @@
 import { GraphQLClient, RequestOption } from "../../client";
-import { createOperationExecutor } from "../../factory/service.factory";
+import { createOperationExecutor } from "../../helpers/service.factory";
 import { sopReviewSchema } from "./schemas/sop-review.schema";
 import { CreateSOPReviewRequest, CreateSOPReviewResponse, createSOPReviewResponseFields, createSOPReviewResponseNestedFields, CreateSOPReviewResponseNestedFields, GetSOPReviewRequest, GetSOPReviewResponse, getSOPReviewResponseFields, getSOPReviewResponseNestedFields, GetSOPReviewResponseNestedFields, UpdateSOPReviewRequest, UpdateSOPReviewResponse, updateSOPReviewResponseFields, updateSOPReviewResponseNestedFields, UpdateSOPReviewResponseNestedFields } from "./types/sop-review.type";
 

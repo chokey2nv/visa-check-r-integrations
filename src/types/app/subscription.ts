@@ -1,4 +1,27 @@
-
+export interface ServiceCreditCost {
+    id: string;
+    serviceName: string;
+    credits: number;
+    createdAt: string;
+}
+export interface CreditTransaction {
+    id: string;
+    userId: string;
+    price: number;
+    credits: number;
+    creditBalance: number;
+    transactionId: string;
+    metaJson: string;
+    createdAt: string;
+}
+export interface CreditPlan {
+    id: string;
+    title: string;
+    description: string;
+    credits: number;
+    price: number;
+    createdAt: string;
+}
 
 
 /* ----------------------------------
