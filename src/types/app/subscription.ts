@@ -8,6 +8,7 @@ export interface CreditTransaction {
     id: string;
     userId: string;
     price: number;
+    planId: string;
     credits: number;
     creditBalance: number;
     transactionId: string;
@@ -20,6 +21,7 @@ export interface CreditPlan {
     description: string;
     credits: number;
     price: number;
+    creditPlanStatus: "active" | "inactive";
     createdAt: string;
 }
 
