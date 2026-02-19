@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface ServiceCreditCost {
     id: string;
     serviceName: string;
@@ -14,6 +16,9 @@ export interface CreditTransaction {
     transactionId: string;
     metaJson: string;
     createdAt: string;
+    creditTransactionType: "credit"|"debit"
+    creditPlan?: CreditPlan;
+    user?: User;
 }
 export interface CreditPlan {
     id: string;

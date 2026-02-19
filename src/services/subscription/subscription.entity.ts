@@ -23,7 +23,8 @@ export const creditTransactionQuery: CreditTransactionFields = [
     "price",
     "transactionId",
     "userId",
-    "planId"
+    "planId",
+    "creditTransactionType",
 ]
 export const serviceCreditCostQuery: ServiceCreditCostFields = [
     "createdAt",
