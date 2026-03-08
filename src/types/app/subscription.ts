@@ -5,6 +5,7 @@ export interface ServiceCreditCost {
     serviceName: string;
     credits: number;
     createdAt: string;
+    code: "sop_review"| "readiness_check";
 }
 export interface CreditTransaction {
     id: string;

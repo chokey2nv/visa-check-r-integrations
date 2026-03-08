@@ -63,6 +63,7 @@ export const sopReviewQuery: SOPReviewFields = [
     "unansweredQuestions",
     "visaProfileChecklistItemId",
     "visaProfileId",
+    "isValidSOP"
 ]
 
 

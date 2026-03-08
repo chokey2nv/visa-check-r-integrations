@@ -33,6 +33,7 @@ export interface SOPReview {
     unansweredQuestions: SOPAnswer[],
     reviewedAt: string,
     createdAt: string
+    isValidSOP: BooleanLiteral
 }
 
 export type VisaType = "study"|"visit"|"work"|"extendVisa"|"relocate"

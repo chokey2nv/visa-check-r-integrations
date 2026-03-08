@@ -6,3 +6,4 @@ export * from "./activity-log.service"
 export * from "./subscription.service";
 export * from "./user-subscription.service"
 export * from "./consultant-invite.service"
+export * from "./user-credit.service"

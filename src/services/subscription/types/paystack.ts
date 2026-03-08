@@ -1,5 +1,7 @@
 export interface PaystackInitializePaymentRequest{
     userId: string;
+    planId: string;
+    amount: number;
 }
 export interface PaystackInitializePaymentResponse{
     authorization_url: string;
