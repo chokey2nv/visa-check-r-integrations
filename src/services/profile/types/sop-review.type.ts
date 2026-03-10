@@ -1,4 +1,4 @@
-import { SOPAnswer, SOPReview } from "../../../types";
+import { SOPReview } from "../../../types";
 import { SOPAnswerFields, sopAnswerQuery, SOPReviewFields, sopReviewQuery } from "../profile.entity";
 
 export interface GetSOPReviewRequest {
