@@ -3,7 +3,7 @@ import { AIServerAuthFields, aiServerAuthQuery } from "./ai-server.entity";
 
 export interface GetAIServerAuthRequest {
     visaProfileId: string;
-    requestType: "readiness_score" | "sop_review"; // TODO: enum
+    requestType: "readiness_score" | "sop_review" | "sop_answer_review"; // TODO: enum
 }
 
 export interface GetAIServerAuthResponse {
