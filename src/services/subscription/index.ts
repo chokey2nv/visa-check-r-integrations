@@ -5,3 +5,5 @@ export * from "./paystack.service"
 export * from "./credit-plan.service";
 export * from "./credit-transaction.service";
 export * from "./service-credit-cost.service";
+export * from "./coupon-redemption.service";
+export * from "./coupon.service";

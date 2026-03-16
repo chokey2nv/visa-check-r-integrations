@@ -1,5 +1,29 @@
 import { User } from "./user";
 
+
+export interface CouponRedemption {
+    id: string;
+    couponId: string;
+    userId: string;
+    usedAt: string;
+    valueUsed: number;
+    transactionAmount: number;
+    createdAt: string;
+    planId: string;
+    coupon?: Coupon;
+}
+export interface Coupon {
+    id: string;
+    code: string;
+    couponType: "freeCredit" | "percentageDiscount" | "fixedDiscount";
+    value: number;
+    maxUses: number;
+    usedCount: number;
+    perUseLimit: number;
+    couponStatus: "active" | "inactive";
+    createdAt: string;
+    expiredAt: string;
+}
 export interface ServiceCreditCost {
     id: string;
     serviceName: string;
@@ -18,6 +42,8 @@ export interface CreditTransaction {
     metaJson: string;
     createdAt: string;
     creditTransactionType: "credit"|"debit"
+    CouponId: string;
+    CouponAmount: number;
     creditPlan?: CreditPlan;
     user?: User;
 }
