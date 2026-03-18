@@ -50,6 +50,8 @@ export const creditTransactionQuery: CreditTransactionFields = [
     "userId",
     "planId",
     "creditTransactionType",
+    "couponCode",
+    "couponAmount"
 ]
 export const serviceCreditCostQuery: ServiceCreditCostFields = [
     "createdAt",

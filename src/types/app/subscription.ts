@@ -42,8 +42,8 @@ export interface CreditTransaction {
     metaJson: string;
     createdAt: string;
     creditTransactionType: "credit"|"debit"
-    CouponId: string;
-    CouponAmount: number;
+    couponCode: string;
+    couponAmount: number;
     creditPlan?: CreditPlan;
     user?: User;
 }

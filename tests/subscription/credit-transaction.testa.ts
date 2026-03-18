@@ -3,21 +3,50 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { initTestEnv } from "../testEnv";
 import { Chance } from "chance";
 import { createCreditTransactionService, CreditTransactionService } from "../../src/services/subscription/credit-transaction.service";
+import { createCouponService } from "../../src/services/subscription/coupon.service";
 
 const chance = new Chance();
 
 describe.sequential("Credit Transaction API", () => { 
     let creditTransactionService: CreditTransactionService;
     let creditTransactionId: string
+    let couponId: string
 
     beforeAll(async () => {
         console.log("🌍 [sop-review.test.ts] Running once for all tests...");
 
         const env = await initTestEnv();
         creditTransactionService = createCreditTransactionService(env?.client!);
+        const couponService = await createCouponService(env?.client!);
+        const res = await couponService.createCoupon({
+            coupon: {
+                couponStatus: "active",
+                value: chance.integer({ min: 10, max: 100 }),
+                perUseLimit: 2,
+                maxUses: 2,
+                expiredAt: new Date().toISOString(),
+            }
+        })
+        expect(res).not.toBeNull();
+        expect(res?.coupon.id).not.toBeNull();
+        expect(res?.coupon.id).not.equal("");
+        couponId = res?.coupon.id ?? "";
         
     })
 
+    it("create tx with coupon", async () => {
+        const res = await creditTransactionService.createCreditTransaction({
+            creditTransaction: {
+                price: 0,
+                couponId,
+            }
+        })
+        console.log({ res })
+        expect(res).not.toBeNull();
+        expect(res?.creditTransaction.id).not.toBeNull();
+        expect(res?.creditTransaction.id).not.equal("");
+        creditTransactionId = res?.creditTransaction.id ?? "";
+    })
     it("create credit plan", async () => {
         const res = await creditTransactionService.createCreditTransaction({
             creditTransaction: {
