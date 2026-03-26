@@ -38,7 +38,7 @@ describe.sequential("Credit Transaction API", () => {
         const res = await creditTransactionService.createCreditTransaction({
             creditTransaction: {
                 price: 0,
-                couponId,
+                couponCode,
             }
         })
         console.log({ res })
