@@ -1,7 +1,7 @@
 import { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
 import { checklistItemSchema } from "./schemas/checklist-item.schema";
-import { CreateChecklistItemRequest, createChecklistItemResponse, CreateChecklistItemResponse, createChecklistItemResponseNestedFields, CreateChecklistItemResponseNestedFields, DeleteChecklistItemRequest, deleteChecklistItemResponse, DeleteChecklistItemResponse, GetChecklistItemRequest, getChecklistItemResponse, GetChecklistItemResponse, getChecklistItemResponseNestedFields, GetChecklistItemResponseNestedFields, listChecklistItemResponse, listChecklistItemResponseNestedFields, ListChecklistItemsRequest, ListChecklistItemsResponse, ListChecklistItemsResponseNestedFields, UpdateChecklistItemRequest, updateChecklistItemResponse, UpdateChecklistItemResponse, updateChecklistItemResponseNestedFields, UpdateChecklistItemResponseNestedFields } from "./types/checklist-item.type";
+import { CreateChecklistItemRequest, createChecklistItemResponse, CreateChecklistItemResponse, createChecklistItemResponseNestedFields, CreateChecklistItemResponseNestedFields, DeleteChecklistItemRequest, deleteChecklistItemResponse, DeleteChecklistItemResponse, GetChecklistItemCountRequest, getChecklistItemCountResponse, GetChecklistItemCountResponse, GetChecklistItemRequest, getChecklistItemResponse, GetChecklistItemResponse, getChecklistItemResponseNestedFields, GetChecklistItemResponseNestedFields, listChecklistItemResponse, listChecklistItemResponseNestedFields, ListChecklistItemsRequest, ListChecklistItemsResponse, ListChecklistItemsResponseNestedFields, UpdateChecklistItemRequest, updateChecklistItemResponse, UpdateChecklistItemResponse, updateChecklistItemResponseNestedFields, UpdateChecklistItemResponseNestedFields } from "./types/checklist-item.type";
 
 export const createChecklistItemService = (client: GraphQLClient) => ({
     async deleteChecklistItem(
@@ -62,6 +62,24 @@ export const createChecklistItemService = (client: GraphQLClient) => ({
             option
         );
         return res.data?.createChecklistItem;
+    },
+    async getChecklistItemCount(
+        input: GetChecklistItemCountRequest,
+        fetchFields?: {
+            root?: (keyof GetChecklistItemCountResponse)[],
+        },
+        option?: RequestOption
+    ): Promise<GetChecklistItemCountResponse|undefined> {
+        const res = await client.request<{ getChecklistItemCount: GetChecklistItemCountResponse }>(
+            checklistItemSchema.getChecklistItemCount(
+                gqlQueryStringBuilder<GetChecklistItemCountResponse>(
+                    fetchFields?.root ?? getChecklistItemCountResponse,
+                )
+            ), 
+            input,
+            option
+        );
+        return res.data?.getChecklistItemCount;
     },
     async getChecklistItem(
         input: GetChecklistItemRequest,

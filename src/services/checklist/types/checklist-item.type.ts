@@ -16,6 +16,15 @@ export const getChecklistItemResponseNestedFields: GetChecklistItemResponseNeste
     checklistItem: checklistItemQuery
 }
 
+// count 
+export interface GetChecklistItemCountRequest {
+    checklistItem: Partial<ChecklistItem>;
+}
+export interface GetChecklistItemCountResponse {
+    count: number;
+}
+export const getChecklistItemCountResponse: (keyof GetChecklistItemCountResponse)[] = ["count"]
+
 // list 
 export interface ListChecklistItemsRequest {
     limit: number;

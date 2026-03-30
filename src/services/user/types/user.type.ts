@@ -1,6 +1,21 @@
-import { User, UserCount, UserSetting, UserType, UserTypeStatusCount } from "../../../types";
-import { UserCountFields, userCountQuery, UserCreditFields, userCreditQuery, UserFields, userQuery, UserSettingFields, userSettingQuery, UserTypeStatusCountFields, userTypeStatusCountQuery } from "../user.entity";
+import { PartnerMatrices, User, UserCount, UserSetting, UserType, UserTypeStatusCount } from "../../../types";
+import { PartnerMatricesFields, partnerMatricesQuery, UserCountFields, userCountQuery, UserCreditFields, userCreditQuery, UserFields, userQuery, UserSettingFields, userSettingQuery, UserTypeStatusCountFields, userTypeStatusCountQuery } from "../user.entity";
 
+
+
+export interface GetPartnerMatricesRequest {
+    partnerId: string;
+}
+export interface GetPartnerMatricesResponse {
+    partnerMatrices: PartnerMatrices;
+}
+export const getPartnerMatricesResponseFields: (keyof GetPartnerMatricesResponse)[] = ["partnerMatrices"]
+export interface GetPartnerMatricesResponseNestedFields {
+    partnerMatrices: PartnerMatricesFields;
+}
+export const getPartnerMatricesResponseNestedFields: GetPartnerMatricesResponseNestedFields = {
+    partnerMatrices: partnerMatricesQuery
+}
 
 export interface GetUserTypeStatusCountRequest {
     userType: UserType;

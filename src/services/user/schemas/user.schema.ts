@@ -1,4 +1,11 @@
 export const userSchema = {
+    getPartnerMatrices: (query: string) => `
+      query getPartnerMatrices($partnerId: String!){
+        getPartnerMatrices(partnerId: $partnerId) {
+          ${query}
+        }
+      }
+    `,
     getUserTypeStatusCount: (query: string) => `
       query getUserTypeStatusCount($userType:  UserTypeEnum!){
         getUserTypeStatusCount(userType: $userType) {

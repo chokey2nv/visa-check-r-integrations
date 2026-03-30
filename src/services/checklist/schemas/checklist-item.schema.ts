@@ -1,4 +1,11 @@
 export const checklistItemSchema = {
+    getChecklistItemCount: (query: string) => `
+        query getChecklistItemCount($checklistItem: ChecklistItemInput!) {
+            getChecklistItemCount(checklistItem: $checklistItem) {
+                ${query}
+            }
+        }
+    `,
     getChecklistItem: (query: string) => `
         query getChecklistItem($checklistItem: ChecklistItemInput!) {
             getChecklistItem(checklistItem: $checklistItem) {

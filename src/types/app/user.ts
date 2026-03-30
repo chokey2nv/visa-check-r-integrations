@@ -22,6 +22,14 @@ export type ConsultantDashboardMetricCount = Record<ConsultantDashboardMetricCou
 export type AdminDashboardMatrixKey = "visaProfileCount"|"partnerCount"|"consultantCount"|"pendingReviewCount"
 export type AdminDashboardMatrix = Record<AdminDashboardMatrixKey, number>;
 
+export interface PartnerMatrices {
+    totalClients: number;
+    submittedApplications: number;
+    approvedApplications: number;
+    rejectedApplications: number;
+    totalApplications: number;
+}
+
 export interface UserCredit {
     id: string;
     userId: string;
