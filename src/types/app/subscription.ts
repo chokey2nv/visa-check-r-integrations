@@ -29,7 +29,7 @@ export interface ServiceCreditCost {
     serviceName: string;
     credits: number;
     createdAt: string;
-    code: "sop_review"| "readiness_check";
+    code: "sop_review"| "readiness_check"|"consultant_review";
 }
 export interface CreditTransaction {
     id: string;

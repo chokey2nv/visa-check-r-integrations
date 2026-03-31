@@ -1,6 +1,14 @@
 import { ReadinessScoreReview } from "../../../types";
-import { getChecklistItemResponseNestedFields, GetChecklistItemResponseNestedFields } from "../../checklist";
 import { DocumentReviewFields, documentReviewQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery } from "../profile.entity";
+
+
+export interface GetUserAverageReadinessScoreRequest {
+    userId: string;
+}
+export interface GetUserAverageReadinessScoreResponse {
+    averageScore: number;
+}
+export const getUserAverageReadinessScoreResponseFields: (keyof GetUserAverageReadinessScoreResponse)[] = ["averageScore"];
 
 export interface GetReadinessScoreReviewRequest {
     readinessScoreReview: Partial<ReadinessScoreReview>;

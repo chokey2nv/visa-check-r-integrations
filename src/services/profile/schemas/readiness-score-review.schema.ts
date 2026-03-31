@@ -1,5 +1,12 @@
 export const readinessScoreReviewSchema = {
-
+    // GetUserAverageReadinessScore 
+    getUserAverageReadinessScore: (query: string) => `
+        query getUserAverageReadinessScore($userId: String!) {
+            getUserAverageReadinessScore(userId: $userId) {
+                ${query}
+            }
+        }
+    `,
     listReadinessScoreReviews: (query: string) => `
         query listReadinessScoreReviews($limit: Int!, $skip: Int!, $search: String, $readinessScoreReviewIds: [String], $readinessScoreReview: ReadinessScoreReviewInput) {
             listReadinessScoreReviews(limit: $limit, skip: $skip, search: $search, readinessScoreReviewIds: $readinessScoreReviewIds, readinessScoreReview: $readinessScoreReview) {

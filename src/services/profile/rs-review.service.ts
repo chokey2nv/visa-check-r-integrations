@@ -18,9 +18,30 @@ import {
     updateReadinessScoreReviewResponseFields,
     UpdateReadinessScoreReviewResponseNestedFields,
     updateReadinessScoreReviewResponseNestedFields,
+    GetUserAverageReadinessScoreRequest,
+    GetUserAverageReadinessScoreResponse,
+    getUserAverageReadinessScoreResponseFields,
 } from "./types/rs-review.type";
 
 export const createReadinessScoreReviewService = (client: GraphQLClient) => ({
+    async getUserAverageReadinessScore(
+        input: GetUserAverageReadinessScoreRequest,
+        fetchFields?: {
+            root?: (keyof GetUserAverageReadinessScoreResponse)[],
+        },
+        option?: RequestOption
+    ): Promise<GetUserAverageReadinessScoreResponse|undefined> {
+        const res = await client.request<{ getUserAverageReadinessScore: GetUserAverageReadinessScoreResponse }>(
+            readinessScoreReviewSchema.getUserAverageReadinessScore(
+                gqlQueryStringBuilder<GetUserAverageReadinessScoreResponse>(
+                    fetchFields?.root ?? getUserAverageReadinessScoreResponseFields
+                )
+            ),
+            input,
+            option
+        );
+        return res.data?.getUserAverageReadinessScore;
+    },
     async deleteReadinessScoreReview(
         input: DeleteReadinessScoreReviewRequest,
         fetchFields?: {
