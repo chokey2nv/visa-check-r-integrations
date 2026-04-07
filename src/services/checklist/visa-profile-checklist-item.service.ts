@@ -9,7 +9,7 @@ export const createVisaProfileChecklistItemService = (client: GraphQLClient) => 
     // upload file 
     async uploadChecklistImage(form: FormData) {
         const fileClient = createFileService(client);
-        return ((await fileClient.uploadFile<{visaProfileChecklistItem: VisaProfileChecklistItem}>(form as any)).visaProfileChecklistItem);
+        return ((await fileClient.uploadFile<{visaProfileChecklistItem: VisaProfileChecklistItem}>(form as any))?.visaProfileChecklistItem);
     },
     async deleteVisaProfileChecklistItem(
         input: DeleteVisaProfileChecklistItemRequest,
