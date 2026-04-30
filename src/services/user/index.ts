@@ -7,3 +7,4 @@ export * from "./subscription.service";
 export * from "./user-subscription.service"
 export * from "./consultant-invite.service"
 export * from "./user-credit.service"
+export * from "./notification.service"
