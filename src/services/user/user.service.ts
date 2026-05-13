@@ -1,4 +1,3 @@
-import { get } from "http";
 import type { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
 import { userSchema } from "./schemas/user.schema";

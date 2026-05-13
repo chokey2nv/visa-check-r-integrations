@@ -1,5 +1,12 @@
 export const visaApplicationSchema = {
 
+    getVisaApplicationStats: (query: string) => `
+        query getVisaApplicationStats($userId: String!, $referenceCode: String) {
+            getVisaApplicationStats(userId: $userId, referenceCode: $referenceCode) {
+                ${query}
+            }
+        }
+    `,
     getVisaApplicationCount: (query: string) => `
         query getVisaApplicationCount($visaApplication: VisaApplicationInput!) {
             getVisaApplicationCount(visaApplication: $visaApplication) {

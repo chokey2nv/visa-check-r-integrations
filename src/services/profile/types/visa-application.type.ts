@@ -1,6 +1,20 @@
-import { VisaApplication } from "../../../types";
-import { VisaApplicationFields, visaApplicationQuery } from "../profile.entity";
+import { VisaApplication, VisaApplicationStats } from "../../../types";
+import { VisaApplicationFields, visaApplicationQuery, VisaApplicationStatsFields, visaApplicationStatsQuery } from "../profile.entity";
 
+export interface GetVisaApplicationStatsRequest {
+    userId: string;
+    referenceCode: string;
+}
+export interface GetVisaApplicationStatsResponse {
+    visaApplicationStats: VisaApplicationStats;
+}
+export const getVisaApplicationStatsResponseFields: (keyof GetVisaApplicationStatsResponse)[] = ["visaApplicationStats"];
+export interface GetVisaApplicationStatsResponseNestedFields {
+    visaApplicationStats: VisaApplicationStatsFields
+}
+export const getVisaApplicationStatsResponseNestedFields: GetVisaApplicationStatsResponseNestedFields = {
+    visaApplicationStats: visaApplicationStatsQuery
+}
 
 export interface GetVisaApplicationCountRequest {
     visaApplication: Partial<VisaApplication>;

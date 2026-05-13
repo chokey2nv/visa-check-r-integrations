@@ -1,4 +1,4 @@
-import { ReadinessScoreReview, VisaApplication, VisaProfile, ConsultantAssignment, VisaProfileReviewComment, DocumentReview, SOPAnswer, SOPReview, VisaProfileCount, ConsultantClientStats } from "../../types";
+import { ReadinessScoreReview, VisaApplication, VisaProfile, ConsultantAssignment, VisaProfileReviewComment, DocumentReview, SOPAnswer, SOPReview, VisaProfileCount, ConsultantClientStats, VisaApplicationStats } from "../../types";
 import { Job } from "../../types/app/job";
 
 export type ReadinessScoreReviewFields = (keyof ReadinessScoreReview)[];
@@ -16,8 +16,19 @@ export type JobFields = (keyof Job)[]
 export type VisaProfileCountFields = (keyof VisaProfileCount)[]
 export type ConsultantClientStatsFields = (keyof ConsultantClientStats)[]
 
+export type VisaApplicationStatsFields = (keyof VisaApplicationStats)[]
 
 
+
+
+export const visaApplicationStatsQuery: VisaApplicationStatsFields = [
+    "approved",
+    "inProgress",
+    "incomplete",
+    "rejected",
+    "submitted",
+    "total"
+]
 
 export const consultantClientStatsQuery: ConsultantClientStatsFields = [
     "awaitingReview",
@@ -105,6 +116,7 @@ export const visaProfileQuery: VisaProfileFields = [
     "readinessScoreReview",
     "consultantAssignment",
     "ownerId",
+    "referenceCode",
 ];
 
 export const visaApplicationQuery: VisaApplicationFields = [

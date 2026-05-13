@@ -1,7 +1,7 @@
 export const userSchema = {
     getPartnerMatrices: (query: string) => `
-      query getPartnerMatrices($partnerId: String!){
-        getPartnerMatrices(partnerId: $partnerId) {
+      query getPartnerMatrices($partnerId: String!, $referenceCode: String!) {
+        getPartnerMatrices(partnerId: $partnerId, referenceCode: $referenceCode) {
           ${query}
         }
       }

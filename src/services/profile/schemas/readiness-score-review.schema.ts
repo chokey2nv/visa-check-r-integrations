@@ -1,8 +1,8 @@
 export const readinessScoreReviewSchema = {
     // GetUserAverageReadinessScore 
     getUserAverageReadinessScore: (query: string) => `
-        query getUserAverageReadinessScore($userId: String!) {
-            getUserAverageReadinessScore(userId: $userId) {
+        query getUserAverageReadinessScore($userId: String!, $referralCode: String!) {
+            getUserAverageReadinessScore(userId: $userId, referralCode: $referralCode) {
                 ${query}
             }
         }

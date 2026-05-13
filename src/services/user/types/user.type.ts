@@ -5,6 +5,7 @@ import { PartnerMatricesFields, partnerMatricesQuery, UserCountFields, userCount
 
 export interface GetPartnerMatricesRequest {
     partnerId: string;
+    referenceCode: string;
 }
 export interface GetPartnerMatricesResponse {
     partnerMatrices: PartnerMatrices;

@@ -3,6 +3,14 @@ import { BooleanLiteral } from "./shared";
 import { User } from "./user";
 import { type Dayjs } from "dayjs"
 
+export interface VisaApplicationStats {
+    total: number;
+    approved: number;
+    rejected: number;
+    incomplete: number;
+    inProgress: number;
+    submitted: number;
+}
 
 export interface ConsultantClientStats {
     consultantId: string;

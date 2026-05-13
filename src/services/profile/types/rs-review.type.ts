@@ -4,6 +4,7 @@ import { DocumentReviewFields, documentReviewQuery, ReadinessScoreReviewFields, 
 
 export interface GetUserAverageReadinessScoreRequest {
     userId: string;
+    referralCode: string;
 }
 export interface GetUserAverageReadinessScoreResponse {
     averageScore: number;

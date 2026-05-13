@@ -10,6 +10,11 @@ import {
     DeleteVisaApplicationResponse, deleteVisaApplicationResponseFields, GetVisaApplicationCountRequest, GetVisaApplicationCountResponse, getVisaApplicationCountResponseFields, GetVisaApplicationRequest, 
     GetVisaApplicationResponse, getVisaApplicationResponseFields, getVisaApplicationResponseNestedFields, 
     GetVisaApplicationResponseNestedFields, 
+    GetVisaApplicationStatsRequest, 
+    GetVisaApplicationStatsResponse, 
+    getVisaApplicationStatsResponseFields, 
+    GetVisaApplicationStatsResponseNestedFields, 
+    getVisaApplicationStatsResponseNestedFields, 
     ListVisaApplicationsRequest, ListVisaApplicationsResponse, 
     listVisaApplicationsResponseFields, 
     listVisaApplicationsResponseNestedFields, 
@@ -21,6 +26,27 @@ import {
 } from "./types/visa-application.type";
 
 export const createVisaApplicationService = (client: GraphQLClient) => ({
+
+    async getVisaApplicationStats(
+        input: GetVisaApplicationStatsRequest,
+        fetchFields?: {
+            root?: (keyof GetVisaApplicationStatsResponse)[],
+            nestedFields?: GetVisaApplicationStatsResponseNestedFields
+        },
+        option?: RequestOption
+    ):Promise<GetVisaApplicationStatsResponse|undefined> {
+        const res = await client.request<{ getVisaApplicationStats: GetVisaApplicationStatsResponse }>(
+            visaApplicationSchema.getVisaApplicationStats(
+                gqlQueryStringBuilder<GetVisaApplicationStatsResponse, GetVisaApplicationStatsResponseNestedFields>(
+                    fetchFields?.root ?? getVisaApplicationStatsResponseFields,
+                    fetchFields?.nestedFields ?? getVisaApplicationStatsResponseNestedFields
+                )
+            ),
+            input,
+            option
+        );
+        return res.data?.getVisaApplicationStats;
+    },
     async getVisaApplicationCount(
         input: GetVisaApplicationCountRequest,
         fetchFields?: {
