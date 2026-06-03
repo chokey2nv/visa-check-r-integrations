@@ -1,8 +1,8 @@
 export const visaApplicationSchema = {
 
     getVisaApplicationStats: (query: string) => `
-        query getVisaApplicationStats($userId: String!, $referenceCode: String) {
-            getVisaApplicationStats(userId: $userId, referenceCode: $referenceCode) {
+        query getVisaApplicationStats($userId: String!, $referralCode: String) {
+            getVisaApplicationStats(userId: $userId, referralCode: $referralCode) {
                 ${query}
             }
         }

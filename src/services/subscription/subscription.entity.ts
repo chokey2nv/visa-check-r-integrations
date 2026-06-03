@@ -59,4 +59,5 @@ export const serviceCreditCostQuery: ServiceCreditCostFields = [
     "credits",
     "id",
     "serviceName",
+    "code"
 ]

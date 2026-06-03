@@ -3,7 +3,7 @@ import { VisaApplicationFields, visaApplicationQuery, VisaApplicationStatsFields
 
 export interface GetVisaApplicationStatsRequest {
     userId: string;
-    referenceCode: string;
+    referralCode: string;
 }
 export interface GetVisaApplicationStatsResponse {
     visaApplicationStats: VisaApplicationStats;
