@@ -1,6 +1,15 @@
 import { VisaProfileActivityLog } from "./profile";
 import { BooleanLiteral } from "./shared";
 
+export interface AppConfig {
+    id: string;
+    shortname: string;
+    title: string;
+    status: "active" | "inactive";
+    value: string;
+    valueDefinition: string;
+    createdAt: string;
+}
 
 export type SettingNotificationChannelKey = "push" | "sms" | "email"
 export type UserNotificationSettingKey = 

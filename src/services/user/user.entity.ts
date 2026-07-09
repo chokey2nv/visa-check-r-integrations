@@ -1,4 +1,4 @@
-import { ConsultantInvite, ContactMessage, Notification, PartnerMatrices, Subscription, User, UserActivityLog, UserCount, UserCredit, UserSetting, UserSubscription, UserTypeStatusCount } from "../../types";
+import { AppConfig, ConsultantInvite, ContactMessage, Notification, PartnerMatrices, Subscription, User, UserActivityLog, UserCount, UserCredit, UserSetting, UserSubscription, UserTypeStatusCount } from "../../types";
 
 export type UserCreditFields = (keyof UserCredit)[]
 export type UserFields = (keyof User)[];
@@ -12,10 +12,13 @@ export type UserTypeStatusCountFields = (keyof UserTypeStatusCount)[]
 export type ContactMessageFields = (keyof ContactMessage)[]
 export type PartnerMatricesFields = (keyof PartnerMatrices)[]
 export type NotificationFields = (keyof Notification)[];
+export type AppConfigFields = (keyof AppConfig)[]
 
 
 
-
+export const appConfigQuery: AppConfigFields = [
+    "createdAt", "id", "shortname", "status", "title", "value", "valueDefinition"
+]
 export const notificationQuery: NotificationFields = [
     "id",
     "userId",

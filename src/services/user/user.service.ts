@@ -1,10 +1,30 @@
 import type { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
 import { userSchema } from "./schemas/user.schema";
-import { CreateUserRequest, CreateUserResponse, createUserResponseFields, createUserResponseNestedFields, CreateUserResponseNestedFields, DeleteUserRequest, DeleteUserResponse, deleteUserResponseFields, GetPartnerMatricesRequest, GetPartnerMatricesResponse, getPartnerMatricesResponseFields, getPartnerMatricesResponseNestedFields, GetPartnerMatricesResponseNestedFields, getUserCountResponse, GetUserCountResponse, getUserCountResponseNestedFields, GetUserCountResponseNestedFields, GetUserRequest, GetUserResponse, getUserResponseFields, getUserResponseNestedFields, GetUserResponseNestedFields, GetUserTypeStatusCountRequest, getUserTypeStatusCountResponse, GetUserTypeStatusCountResponse, getUserTypeStatusCountResponseNestedFields, GetUserTypeStatusCountResponseNestedFields, ListUsersRequest, ListUsersResponse, listUsersResponseFields, listUsersResponseNestedFields, ListUsersResponseNestedFields, MeResponse, meResponseFields, meResponseNestedFields, MeResponseNestedFields, UpdateUserRequest, UpdateUserResponse, updateUserResponseFields, updateUserResponseNestedFields, UpdateUserResponseNestedFields } from "./types/user.type";
+import { CreateUserRequest, CreateUserResponse, createUserResponseFields, createUserResponseNestedFields, CreateUserResponseNestedFields, DeleteUserRequest, DeleteUserResponse, deleteUserResponseFields, GetPartnerMatricesRequest, GetPartnerMatricesResponse, getPartnerMatricesResponseFields, getPartnerMatricesResponseNestedFields, GetPartnerMatricesResponseNestedFields, getUserCountResponse, GetUserCountResponse, getUserCountResponseNestedFields, GetUserCountResponseNestedFields, GetUserRequest, GetUserResponse, getUserResponseFields, getUserResponseNestedFields, GetUserResponseNestedFields, GetUserTypeStatusCountRequest, getUserTypeStatusCountResponse, GetUserTypeStatusCountResponse, getUserTypeStatusCountResponseNestedFields, GetUserTypeStatusCountResponseNestedFields, ListPartnerClientsRequest, ListPartnerClientsResponse, listPartnerClientsResponseFields, ListPartnerClientsResponseNestedFields, listPartnerClientsResponseNestedFields, ListUsersRequest, ListUsersResponse, listUsersResponseFields, listUsersResponseNestedFields, ListUsersResponseNestedFields, MeResponse, meResponseFields, meResponseNestedFields, MeResponseNestedFields, UpdateUserRequest, UpdateUserResponse, updateUserResponseFields, updateUserResponseNestedFields, UpdateUserResponseNestedFields } from "./types/user.type";
 
 export const createUserService = (client: GraphQLClient) => ({  
 
+  async listPartnerClients(
+    input: ListPartnerClientsRequest,
+    fetchFields?: {
+      root?: (keyof ListPartnerClientsResponse)[];
+      nestedFields?: ListPartnerClientsResponseNestedFields;
+    },
+    option?: RequestOption
+  ): Promise<ListPartnerClientsResponse|undefined> {
+    const res = await client.request<{ listPartnerClients: ListPartnerClientsResponse }>(
+      userSchema.listPartnerClients(
+        gqlQueryStringBuilder<ListPartnerClientsResponse, ListPartnerClientsResponseNestedFields>(
+          fetchFields?.root ?? listPartnerClientsResponseFields,
+          fetchFields?.nestedFields ?? listPartnerClientsResponseNestedFields
+        )
+      ),
+      input,
+      option
+    );
+    return res.data?.listPartnerClients
+  },
   async getPartnerMatrices(
     input: GetPartnerMatricesRequest,
     fetchFields?: {

@@ -2,7 +2,6 @@ import { PartnerMatrices, User, UserCount, UserSetting, UserType, UserTypeStatus
 import { PartnerMatricesFields, partnerMatricesQuery, UserCountFields, userCountQuery, UserCreditFields, userCreditQuery, UserFields, userQuery, UserSettingFields, userSettingQuery, UserTypeStatusCountFields, userTypeStatusCountQuery } from "../user.entity";
 
 
-
 export interface GetPartnerMatricesRequest {
     partnerId: string;
     referenceCode: string;
@@ -130,3 +129,25 @@ export interface DeleteUserRequest {
 }
 export type DeleteUserResponse = DeleteUserRequest
 export const deleteUserResponseFields: (keyof DeleteUserResponse)[] = ["userId"];
+
+
+// partner clients 
+export interface ListPartnerClientsRequest {
+    referenceCode: string;
+    limit: number;
+    skip: number;
+}
+export interface ListPartnerClientsResponse {
+    total: number;
+    clients: User[];
+}
+export const listPartnerClientsResponseFields: (keyof ListPartnerClientsResponse)[] = [
+    "clients", 'total'
+]
+export interface ListPartnerClientsResponseNestedFields {
+    clients: UserFields;
+}
+export const listPartnerClientsResponseNestedFields: ListPartnerClientsResponseNestedFields = {
+    ..._getUserResponseNestedFields,
+    clients: userQuery
+}

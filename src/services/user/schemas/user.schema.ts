@@ -1,4 +1,13 @@
+import { SchemaConfig } from "../../../helpers/schema-builder";
+
 export const userSchema = {
+    listPartnerClients: (query: string) => `
+      query listPartnerClients($referenceCode: String!, $limit: Int!, $skip: Int!) {
+        listPartnerClients(referenceCode: $referenceCode, limit: $limit, skip: $skip) {
+          ${query}
+        }
+      }
+    `,
     getPartnerMatrices: (query: string) => `
       query getPartnerMatrices($partnerId: String!, $referenceCode: String!) {
         getPartnerMatrices(partnerId: $partnerId, referenceCode: $referenceCode) {
