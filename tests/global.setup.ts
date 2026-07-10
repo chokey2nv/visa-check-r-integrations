@@ -18,15 +18,25 @@ export default async function globalSetup() {
   const password = chance.string();
   const phone = "080" + Math.floor(10000000 + Math.random() * 90000000).toString();
 
+  const email = chance.email();
+  const otpRes = await authService.sendOTP({
+    email,
+  })
+  console.log({ otpRes });
+  const verifyRes = await authService.verifyOTP({
+    email: email,
+    otp: otpRes?.otp || "",
+  })
+  console.log({ verifyRes });
   const res = await authService.signUp({
     password,
     user: {
-      email: chance.email(),
+      email,
       fullName: chance.name(),
       userType: "client",
-      phone,
+      // phone,
     }
-  });
+  }, {}, { headers: { "X-Otp-Verified-Access-Token": verifyRes?.otpVerifiedAccessToken ?? "" } });
 
   const accessToken = res?.accessToken ?? "";
   const userId = res?.userId ?? "";

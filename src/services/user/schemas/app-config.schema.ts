@@ -4,33 +4,33 @@ export const appConfigSchema:Record<DefaultSchemaFields, SchemaConfig> = {
     get: {
         operation: "query",
         name: "getAppConfig",
-        variables: "($coupon: AppConfigInput!)",
-        field: "(coupon: $coupon)",
+        variables: "($appConfig: AppConfigInput!)",
+        field: "(appConfig: $appConfig)",
     },
     list: {
         operation: "query",
         name: "listAppConfigs",
         variables:
-            "($limit: Int!, $skip: Int!, $search: String, $coupon: AppConfigInput, $couponIds: [String])",
+            "($limit: Int!, $skip: Int!, $search: String, $appConfig: AppConfigInput, $appConfigIds: [String])",
         field:
-            "(limit: $limit, skip: $skip, search: $search, coupon: $coupon, couponIds: $couponIds)",
+            "(limit: $limit, skip: $skip, search: $search, appConfig: $appConfig, appConfigIds: $appConfigIds)",
     },
     create: {
         operation: "mutation",
         name: "createAppConfig",
-        variables: "($coupon: AppConfigInput!)",
-        field: "(coupon: $coupon)",
+        variables: "($appConfig: AppConfigInput!)",
+        field: "(appConfig: $appConfig)",
     },
     update: {
         operation: "mutation",
         name: "updateAppConfig",
-        variables: "($couponId: String!, $coupon: AppConfigInput!)",
-        field: "(couponId: $couponId, coupon: $coupon)",
+        variables: "($appConfigId: String!, $appConfig: AppConfigInput!)",
+        field: "(appConfigId: $appConfigId, appConfig: $appConfig)",
     },
     delete: {
         operation: "mutation",
         name: "deleteAppConfig",
-        variables: "($couponId: String!)",
-        field: "(couponId: $couponId)",
+        variables: "($appConfigId: String!)",
+        field: "(appConfigId: $appConfigId)",
     },
 }

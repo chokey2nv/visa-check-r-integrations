@@ -20,3 +20,5 @@ export const createUserCreditService = (client: GraphQLClient) => ({
         }
     ),
 })
+
+export type UserCreditService = ReturnType<typeof createUserCreditService>
