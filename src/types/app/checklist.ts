@@ -30,5 +30,6 @@ export interface VisaProfileChecklistItem {
     createdAt: string;
     checklistItem?: ChecklistItem;
     fileInfo: FileInfo
+    version: string;
 }
 

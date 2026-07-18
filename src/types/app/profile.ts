@@ -168,6 +168,7 @@ export interface DocumentExtraction {
     summary: string;
     extractedFields: Record<string, string>;
     issues: string[];
+    version: string;
 }
 
 export type CrossReferenceSeverity = "info" | "warning" | "critical";
