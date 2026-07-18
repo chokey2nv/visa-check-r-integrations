@@ -150,6 +150,26 @@ export interface VisaProfile extends /*  EducationalBackground, VisaProfileProgr
     referenceCode?: string;
 }
 
+export interface DocumentExtractionResult {
+    type: string;
+    index: number;
+    total: number;
+    title: string;
+    extraction: DocumentExtraction;
+}
+export interface DocumentExtraction {
+    title: string;
+    fileName: string;
+    detectedDocumentType: string;
+    titleMatchesContent: boolean;
+    matchConfidence: number; // 0-1
+    legibility: "clear" | "partial" | "poor";
+    score: number; // 0-10, standalone document quality/risk score
+    summary: string;
+    extractedFields: Record<string, string>;
+    issues: string[];
+}
+
 export type CrossReferenceSeverity = "info" | "warning" | "critical";
 
 export interface CrossReferenceFinding {
@@ -171,6 +191,7 @@ export interface DocumentReview {
     review: string;
     feedback?: string;
     examples?: string[];
+    extraction?: DocumentExtractionResult
 }
 
 export interface ReadinessScoreReview {

@@ -1,5 +1,5 @@
 import { ReadinessScoreReview } from "../../../types";
-import { DocumentReviewFields, documentReviewQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery } from "../profile.entity";
+import { CrossReferenceFindingFields, crossReferenceFindingQuery, CrossReferenceResultFields, crossReferenceResultQuery, DocumentExtractionFields, documentExtractionQuery, DocumentReviewFields, documentReviewQuery, ReadinessScoreReviewFields, readinessScoreReviewQuery } from "../profile.entity";
 
 
 export interface GetUserAverageReadinessScoreRequest {
@@ -20,10 +20,19 @@ export interface GetReadinessScoreReviewResponse {
 export const getReadinessScoreReviewResponseFields: (keyof GetReadinessScoreReviewResponse)[] = ["readinessScoreReview"];
 export interface GetReadinessScoreReviewResponseNestedFields {
     readinessScoreReview: ReadinessScoreReviewFields
-    documents: DocumentReviewFields
+
+    documents: DocumentReviewFields;
+    extraction: DocumentExtractionFields;
+
+    crossReference: CrossReferenceResultFields;
+    findings: CrossReferenceFindingFields
 }
 const _getReadinessScoreReviewResponseNestedFields: Omit<GetReadinessScoreReviewResponseNestedFields, "readinessScoreReview"> = {
     documents: documentReviewQuery,
+    extraction: documentExtractionQuery,
+
+    crossReference: crossReferenceResultQuery,
+    findings: crossReferenceFindingQuery
 }
 export const getReadinessScoreReviewResponseNestedFields: GetReadinessScoreReviewResponseNestedFields = {
     readinessScoreReview: readinessScoreReviewQuery,

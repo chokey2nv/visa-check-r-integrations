@@ -1,4 +1,4 @@
-import { ReadinessScoreReview, VisaApplication, VisaProfile, ConsultantAssignment, VisaProfileReviewComment, DocumentReview, SOPAnswer, SOPReview, VisaProfileCount, ConsultantClientStats, VisaApplicationStats } from "../../types";
+import { ReadinessScoreReview, VisaApplication, VisaProfile, ConsultantAssignment, VisaProfileReviewComment, DocumentReview, SOPAnswer, SOPReview, VisaProfileCount, ConsultantClientStats, VisaApplicationStats, DocumentExtraction, CrossReferenceFinding, CrossReferenceResult } from "../../types";
 import { Job } from "../../types/app/job";
 
 export type ReadinessScoreReviewFields = (keyof ReadinessScoreReview)[];
@@ -18,9 +18,36 @@ export type ConsultantClientStatsFields = (keyof ConsultantClientStats)[]
 
 export type VisaApplicationStatsFields = (keyof VisaApplicationStats)[]
 
+export type DocumentExtractionFields = (keyof DocumentExtraction)[]
+export type CrossReferenceFindingFields = (keyof CrossReferenceFinding)[]
+export type CrossReferenceResultFields = (keyof CrossReferenceResult)[]
 
 
 
+export const crossReferenceResultQuery: CrossReferenceResultFields = [
+    "findings",
+    "missingSupportingDocuments",
+    "overallConsistencyScore",
+]
+export const crossReferenceFindingQuery: CrossReferenceFindingFields = [
+    "category",
+    "description",
+    "documentsInvolved",
+    "severity",
+]
+
+export const documentExtractionQuery: DocumentExtractionFields = [
+    "detectedDocumentType",
+    "extractedFields",
+    "fileName",
+    "issues",
+    "legibility",
+    "matchConfidence",
+    "score",
+    "summary",
+    "title",
+    "titleMatchesContent",
+]
 export const visaApplicationStatsQuery: VisaApplicationStatsFields = [
     "approved",
     "inProgress",
@@ -83,7 +110,8 @@ export const documentReviewQuery: DocumentReviewFields = [
     "examples", 
     "review", 
     "score", 
-    "feedback"
+    "feedback",
+    "extraction",
 ]
 export const readinessScoreReviewQuery: ReadinessScoreReviewFields = [
     "createdAt",
@@ -93,6 +121,7 @@ export const readinessScoreReviewQuery: ReadinessScoreReviewFields = [
     "overallAssessment",
     "overallScore",
     "visaProfileId",
+    "crossReference",
 ];
 export const visaProfileQuery: VisaProfileFields = [
     "visaApplication",
